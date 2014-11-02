@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewAboutUs"
+        android:text="This is a Loughborough app to help students with their day to day life at Loughborough University. This app was created as a final year project by Devon Kerai. If you have any queries, please email me at: d.kerai-11@student.lboro.ac.uk" />
+    
+
+</LinearLayout>

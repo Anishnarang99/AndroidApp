@@ -28,8 +28,17 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDV41HanXO2HKT0hfwcVkAZk4UTnIOqvFg" />
+
+        <!-- Splash background -->
         <activity
-            android:name=".Gmaps"
+            android:name=".SplashPage"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,12 +47,27 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDV41HanXO2HKT0hfwcVkAZk4UTnIOqvFg" />
+        <!-- Map Activity -->
+        <activity
+            android:name=".Gmaps"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.gmaps.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- About Us Activity -->
+        <activity
+            android:name=".AboutUs"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.gmaps.ABOUT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1456,10 +1456,15 @@ containing a value of this type.
         public static final int ic_plusone_small_off_client=0x7f020071;
         public static final int ic_plusone_standard_off_client=0x7f020072;
         public static final int ic_plusone_tall_off_client=0x7f020073;
-        public static final int powered_by_google_dark=0x7f020074;
-        public static final int powered_by_google_light=0x7f020075;
+        public static final int lboro_fountain=0x7f020074;
+        public static final int lboro_logo=0x7f020075;
+        public static final int powered_by_google_dark=0x7f020076;
+        public static final int powered_by_google_light=0x7f020077;
     }
     public static final class id {
+        public static final int LinearLayout1=0x7f050050;
+        public static final int RelativeLayout1=0x7f05005c;
+        public static final int aboutUs=0x7f05005f;
         public static final int action_bar=0x7f05002e;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05002d;
@@ -1475,10 +1480,12 @@ containing a value of this type.
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int book_now=0x7f050028;
-        public static final int buttonFindMe=0x7f050052;
-        public static final int buttonLsu=0x7f050053;
-        public static final int buttonUni=0x7f05004f;
-        public static final int buttonWolfson=0x7f050054;
+        public static final int buttonFindMe=0x7f050053;
+        public static final int buttonLsu=0x7f050055;
+        public static final int buttonSearchbyCode=0x7f050059;
+        public static final int buttonSearchbyName=0x7f050058;
+        public static final int buttonUni=0x7f050054;
+        public static final int buttonWolfson=0x7f050056;
         public static final int buyButton=0x7f050022;
         public static final int buy_now=0x7f050027;
         public static final int buy_with_google=0x7f050026;
@@ -1491,10 +1498,10 @@ containing a value of this type.
         public static final int dropdown=0x7f05000f;
         public static final int edit_query=0x7f050043;
         public static final int end=0x7f050013;
+        public static final int exit=0x7f050060;
         public static final int expand_activities_button=0x7f050038;
         public static final int expanded_menu=0x7f05003f;
         public static final int grayscale=0x7f05002a;
-        public static final int header=0x7f050050;
         public static final int holo_dark=0x7f05001d;
         public static final int holo_light=0x7f05001e;
         public static final int home=0x7f050014;
@@ -1504,9 +1511,10 @@ containing a value of this type.
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050039;
         public static final int image1=0x7f05003b;
+        public static final int imageViewLboroLogo=0x7f05005d;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f05003c;
-        public static final int map=0x7f050051;
+        public static final int map=0x7f05005b;
         public static final int match_parent=0x7f050024;
         public static final int middle=0x7f050012;
         public static final int monochrome=0x7f05002b;
@@ -1537,8 +1545,14 @@ containing a value of this type.
         public static final int split_action_bar=0x7f050030;
         public static final int strict_sandbox=0x7f050021;
         public static final int submit_area=0x7f05004c;
+        public static final int tab1=0x7f050052;
+        public static final int tab2=0x7f050057;
+        public static final int tab3=0x7f05005a;
         public static final int tabMode=0x7f050002;
+        public static final int tabhost=0x7f050051;
         public static final int terrain=0x7f05001b;
+        public static final int textViewAboutUs=0x7f05004f;
+        public static final int textViewLboroUni=0x7f05005e;
         public static final int title=0x7f05003e;
         public static final int top_action_bar=0x7f050032;
         public static final int up=0x7f050033;
@@ -1597,8 +1611,13 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030015;
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
-        public static final int activity_gmaps=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int aboutus=0x7f030018;
+        public static final int activity_gmaps=0x7f030019;
+        public static final int splashpage=0x7f03001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
+    }
+    public static final class menu {
+        public static final int additional_info=0x7f0c0000;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
