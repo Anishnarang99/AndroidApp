@@ -121,8 +121,7 @@ public class Gmaps extends Activity implements OnMapClickListener, OnMapLongClic
 	@Override
 	public void onMapClick(LatLng point) {
 		
-		CameraUpdate update = CameraUpdateFactory.newLatLngZoom(point, 17);
-		map.animateCamera(update);
+		Toast.makeText(this, "Do something here when clicking map.", Toast.LENGTH_LONG).show();
 	}
 
 	@Override
