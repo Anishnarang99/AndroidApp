@@ -10,110 +10,61 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.gmaps.Gmaps" >
 
-    <TabHost
-        android:id="@+id/tabhost"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+        <Button
+            android:id="@+id/buttonFindMe"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:onClick="onClick_FindMe"
+            android:text="Find Me" />
 
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </TabWidget>
+        <Button
+            android:id="@+id/buttonUni"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:onClick="onClick_Uni"
+            android:text="Uni" />
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+        <Button
+            android:id="@+id/buttonLsu"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:onClick="onClick_Lsu"
+            android:text="Lsu" />
 
-                <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+        <Button
+            android:id="@+id/buttonWolfson"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:onClick="onClick_Wolfson"
+            android:text="Wolfson" />
 
-                    <Button
-                        android:id="@+id/buttonFindMe"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:onClick="onClick_FindMe"
-                        android:text="Find Me" />
-
-                    <Button
-                        android:id="@+id/buttonUni"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:onClick="onClick_Uni"
-                        android:text="Uni" />
-
-                    <Button
-                        android:id="@+id/buttonLsu"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:onClick="onClick_Lsu"
-                        android:text="Lsu" />
-
-                    <Button
-                        android:id="@+id/buttonWolfson"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:onClick="onClick_Wolfson"
-                        android:text="Wolfson" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal" >
-
-                    <Button
-                        android:id="@+id/buttonSearchbyName"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:onClick="onClick_SearchbyName"
-                        android:text="Building Name" />
-
-                    <Button
-                        android:id="@+id/buttonSearchbyCode"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_weight="1"
-                        android:onClick="onClick_SearchbyCode"
-                        android:text="Room Code" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal" >
-                </LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
+        <Button
+            android:id="@+id/buttonRoute"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:onClick="onClick_Route"
+            android:text="Route" />
+    </LinearLayout>
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
-        android:layout_height="306dp"
-        android:layout_weight="0.54" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

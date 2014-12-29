@@ -21,7 +21,7 @@ public class SplashPage extends Activity {
 					e.printStackTrace();
 				}
 				finally{
-					Intent openMainActivity = new Intent("com.example.gmaps.MAIN"); // The name needs to match the action name in the Android Manifest xml
+					Intent openMainActivity = new Intent("com.example.gmaps.MENU"); // The name needs to match the action name in the Android Manifest xml
 					startActivity(openMainActivity);
 				}
 			}

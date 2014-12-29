@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<loughborough>
+<building>
+<name>Wolfson</name>
+<latitude>52.762358</latitude>
+<longitude>-1.240732</longitude>
+<roomcodes>W002, W004, WU006, WU008, WU013</roomcodes>
+</building>
+<building>
+<name>James France</name>
+<latitude>52.965247</latitude>
+<longitude>-1.290732</longitude>
+<roomcodes>D002, D004</roomcodes>
+</building>
+<building>
+<name>Frank Gibb</name>
+<latitude>52.767358</latitude>
+<longitude>-1.240932</longitude>
+<roomcodes>RT033, RT040, RT037</roomcodes>
+</building>
+<building>
+<name>Design School</name>
+<latitude>52.765247</latitude>
+<longitude>-1.222557</longitude>
+<roomcodes>DES123</roomcodes>
+</building>
+<building>
+<name>Purple Onion</name>
+<latitude>52.766058</latitude>
+<longitude>-1.233866</longitude>
+<roomcodes></roomcodes>
+</building>
+<building>
+<name>Library</name>
+<latitude>52.762851</latitude>
+<longitude>-1.236784</longitude>
+<roomcodes></roomcodes>
+</building>
+<building>
+<name>Devons Home</name>
+<latitude>52.775477</latitude>
+<longitude>-1.223194</longitude>
+<roomcodes></roomcodes>
+</building>
+</loughborough>

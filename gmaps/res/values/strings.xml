@@ -5,4 +5,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="building_names">
+        <item>Wolfson</item>
+        <item>Students Union</item>
+        <item>Frank Gibb</item>
+        <item>Library</item>
+        <item>Purple Onion</item>
+        <item>Design School</item>
+        <item>Devons Home</item>
+        <item>James France</item>
+       </string-array>
+
 </resources>

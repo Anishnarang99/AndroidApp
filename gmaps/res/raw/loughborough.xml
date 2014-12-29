@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<loughborough>
+<building>
+<name>Wolfson</name>
+<latitude>-1.123</latitude>
+<longitude>42.234</longitude>
+<roomcodes>WU006, WU008</roomcodes>
+</building>
+<building>
+<name>James France</name>
+<latitude>-1.123</latitude>
+<longitude>55.234</longitude>
+<roomcodes>REA234, JFK001</roomcodes>
+</building>
+</loughborough>
