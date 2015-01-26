@@ -11,11 +11,11 @@
     tools:context="com.example.gmaps.Gmaps" >
 
     <TextView
-        android:id="@+id/textViewTimetable"
+        android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:text="Timetable" />
+        android:text="Email" />
 
     <LinearLayout
         android:layout_width="match_parent"

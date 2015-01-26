@@ -13,14 +13,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.gmaps.Buildings;
-import com.example.gmaps.Menu;
 
 public class BuildingSearch extends Activity {
 
 	AutoCompleteTextView autoCompTextBuildings, autoCompTextRoomCode;
+	EditText testingField;
+	String blah;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class BuildingSearch extends Activity {
 		Log.d("Devon", "Log message in buildingsearch.java");
 				
 		setUpAutoCompleteTextViews();
+		setUpNormalEditText();
 	}
 
 	private void setUpAutoCompleteTextViews() {
@@ -75,7 +77,14 @@ public class BuildingSearch extends Activity {
 				android.R.layout.simple_list_item_1, roomCodes);
 		autoCompTextRoomCode.setAdapter(adapterRoomCodes);
 		autoCompTextRoomCode.setThreshold(1);
+	}
 
+	private void setUpNormalEditText() {
+
+		testingField = (EditText) findViewById(R.id.editTextNormalTV);
+		blah = testingField.getText().toString();
+		
+		
 	}
 
 	public void onClick_GetDirections(View v) {

@@ -10,7 +10,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
-public class Timetable extends Activity implements OnClickListener {
+public class MainWebsite extends Activity implements OnClickListener {
 
 	WebView ourBrowser;
 	Button back, forward, refresh;
@@ -23,7 +23,7 @@ public class Timetable extends Activity implements OnClickListener {
 		// Make the activity fullscreen - Make sure you set content view after making full screen.
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.timetable);
+		setContentView(R.layout.mainwebsite);
 
 		initialiseVariables();
 		loadBrowser();
@@ -49,7 +49,7 @@ public class Timetable extends Activity implements OnClickListener {
 		ourBrowser.getSettings().setDisplayZoomControls(false);
 		ourBrowser.setWebViewClient(new WebViewClient());
 		ourBrowser.setInitialScale(100);
-		ourBrowser.loadUrl("https://lucas.lboro.ac.uk/its_apx/f?p=student_timetable");
+		ourBrowser.loadUrl("http://www.lboro.ac.uk/");
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package com.example.gmaps;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,7 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
-public class Timetable extends Activity implements OnClickListener {
+public class Learn extends Activity implements OnClickListener {
 
 	WebView ourBrowser;
 	Button back, forward, refresh;
@@ -23,7 +25,7 @@ public class Timetable extends Activity implements OnClickListener {
 		// Make the activity fullscreen - Make sure you set content view after making full screen.
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.timetable);
+		setContentView(R.layout.learn);
 
 		initialiseVariables();
 		loadBrowser();
@@ -47,9 +49,18 @@ public class Timetable extends Activity implements OnClickListener {
 		ourBrowser.getSettings().setUseWideViewPort(true);
 		ourBrowser.getSettings().setBuiltInZoomControls(true);
 		ourBrowser.getSettings().setDisplayZoomControls(false);
-		ourBrowser.setWebViewClient(new WebViewClient());
+		ourBrowser.setWebViewClient(new WebViewClient(){
+		    
+		    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+		        if (url.endsWith(".pdf")) {
+		            
+		        	startActivity(new Intent (Intent.ACTION_VIEW, Uri.parse(url)));
+		            return true;
+		        }
+		        return false;
+		    }});
 		ourBrowser.setInitialScale(100);
-		ourBrowser.loadUrl("https://lucas.lboro.ac.uk/its_apx/f?p=student_timetable");
+		ourBrowser.loadUrl("http://learn.lboro.ac.uk/my");
 	}
 
 	@Override

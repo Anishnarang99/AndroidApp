@@ -49,6 +49,18 @@
         android:hint="Room Code"
         android:inputType="textImeMultiLine|textCapWords" />
 
+    <TextView
+        android:id="@+id/textViewNormalTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Normal Text View" />
+
+    <EditText
+        android:id="@+id/editTextNormalTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+
     <Button
         android:id="@+id/buttonGetDirections"
         style="?android:attr/buttonStyleSmall"

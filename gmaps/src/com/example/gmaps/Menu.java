@@ -26,14 +26,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+
 
 public class Menu extends Activity {
 
 	// Has to have the EXACT same name as the corresponding classes.
-	String classes[] = {"Gmaps", "BuildingSearch", "Timetable", "Extra 3", "Extra 4", "Extra 5", "Extra 6", "Extra 7", "Extra 8"};
+	String classes[] = {"Gmaps", "BuildingSearch", "Learn", "Caspa", "Timetable", "MainWebsite", "LsuWebsite", "BusTravelInfo", "Email", "", "", "", ""};
 	
 	public static List<Buildings> myBuildings = new ArrayList<Buildings>();
 	
@@ -114,7 +115,7 @@ public class Menu extends Activity {
 		try {
 			
 			// Take xml file via input stream from the assets folder.
-			InputStream in_s = getApplicationContext().getAssets().open("loughborough.xml");
+			InputStream in_s = getApplicationContext().getAssets().open("lborofull.xml");
 			
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

@@ -12,7 +12,7 @@ import android.webkit.WebView;
 public class Other extends Activity {
 
 	String lat, lng, currentLat, currentLng;
-	WebView webView;
+	WebView ourBrowser;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,8 @@ public class Other extends Activity {
 		int iframeWidth, iframeHeight;
 		String originLat, originLng, destLat, destLng;
 
-		webView = (WebView) findViewById(R.id.WebViewBrowser);
-		webView.getSettings().setJavaScriptEnabled(true);
+		ourBrowser = (WebView) findViewById(R.id.WebViewBrowser);
+		ourBrowser.getSettings().setJavaScriptEnabled(true);
 		// webView.loadUrl("http://www.google.co.uk");
 		// webView.loadUrl("file:///android_asset/embedapi.html");
 
@@ -73,6 +73,6 @@ public class Other extends Activity {
 				+ "&mode=walking&units=metric\">"
 				+ "</iframe></body></html>";
 
-		webView.loadData(embedAPI, "text/html", "UTF-8");
+		ourBrowser.loadData(embedAPI, "text/html", "UTF-8");
 	}
 }

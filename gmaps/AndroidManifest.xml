@@ -86,6 +86,83 @@
             </intent-filter>
         </activity>
 
+        <!-- Learn Activity -->
+        <activity
+            android:name=".Learn"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.gmaps.LEARN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Caspa Activity -->
+        <activity
+            android:name=".Caspa"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.gmaps.CASPA" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Timetable Activity -->
+        <activity
+            android:name=".Timetable"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.gmaps.TIMETABLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Main Website Activity -->
+        <activity
+            android:name=".MainWebsite"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.gmaps.MAINWEBSITE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- LSU Website Activity -->
+        <activity
+            android:name=".LsuWebsite"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.gmaps.LSUWEBSITE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Bus Travel Information Activity -->
+        <activity
+            android:name=".BusTravelInfo"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.gmaps.BUSTRAVELINFO" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Email Activity -->
+        <activity
+            android:name=".Email"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.gmaps.EMAIL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!-- About Us Activity -->
         <activity
             android:name=".AboutUs"

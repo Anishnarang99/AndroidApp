@@ -13,6 +13,7 @@ public class SplashPage extends Activity {
 		setContentView(R.layout.splashpage);
 		
 		Thread timer = new Thread(){
+			@Override
 			public void run(){
 				try{
 					sleep(2000);
