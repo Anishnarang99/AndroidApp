@@ -34,7 +34,9 @@ import android.widget.Toast;
 public class Menu extends Activity {
 
 	// Has to have the EXACT same name as the corresponding classes.
-	String classes[] = {"Gmaps", "BuildingSearch", "Learn", "Caspa", "Timetable", "MainWebsite", "LsuWebsite", "BusTravelInfo", "Email", "", "", "", ""};
+	String classes[] = {"Gmaps", "BuildingSearch", "Learn", "Caspa", "Timetable",
+						"MainWebsite", "LsuWebsite", "BusTravelInfo", "Email",
+						"News", "Events", "Library", "StaffSearch", "PcLabs", "SafetyToolbox"};
 	
 	public static List<Buildings> myBuildings = new ArrayList<Buildings>();
 	

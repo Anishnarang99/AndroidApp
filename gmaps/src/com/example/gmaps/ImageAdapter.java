@@ -53,5 +53,7 @@ public class ImageAdapter extends BaseAdapter {
     private Integer[] mThumbIds = {
             R.drawable.ic_launcher, R.drawable.lboro_icon, R.drawable.trapland,
             R.drawable.ftl, R.drawable.steam, R.drawable.secondarytile,
-            R.drawable.google_chrome_logo, R.drawable.gradle_icon,R.drawable.oculus};
+            R.drawable.google_chrome_logo, R.drawable.gradle_icon,R.drawable.oculus,
+            R.drawable.circle, R.drawable.halflife, R.drawable.redfolder,
+            R.drawable.matlab, R.drawable.mahjong, R.drawable.solitaire};
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textViewSafetyToolbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Safety Toolbox" />
+
+    <Button
+        android:id="@+id/buttonFlashlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Flashlight" />
+
+    <Button
+        android:id="@+id/buttonCallSecurity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Call Security" />
+
+    <Button
+        android:id="@+id/buttonCallNHSDirect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Call NHS Direct" />
+
+</LinearLayout>
