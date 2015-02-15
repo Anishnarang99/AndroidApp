@@ -34,31 +34,13 @@
             android:text="Uni" />
 
         <Button
-            android:id="@+id/buttonLsu"
+            android:id="@+id/buttonBuildingSearch"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="33dp"
             android:layout_weight="1"
-            android:onClick="onClick_Lsu"
-            android:text="Lsu" />
-
-        <Button
-            android:id="@+id/buttonWolfson"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="33dp"
-            android:layout_weight="1"
-            android:onClick="onClick_Wolfson"
-            android:text="Wolfson" />
-
-        <Button
-            android:id="@+id/buttonRoute"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="33dp"
-            android:layout_weight="1"
-            android:onClick="onClick_Route"
-            android:text="Route" />
+            android:onClick="onClick_BuildingSearch"
+            android:text="Building Search" />
     </LinearLayout>
 
     <fragment

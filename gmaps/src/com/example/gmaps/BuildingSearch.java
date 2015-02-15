@@ -2,6 +2,8 @@ package com.example.gmaps;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,14 +16,13 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class BuildingSearch extends Activity {
 
-	AutoCompleteTextView autoCompTextBuildings, autoCompTextRoomCode;
-	EditText testingField;
-	String blah;
+	AutoCompleteTextView autoCompTextBuildings;
+	EditText editTextRoomCode;
+	String buildingName, roomCode, currentLat, currentLng;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class BuildingSearch extends Activity {
 		Log.d("Devon", "Log message in buildingsearch.java");
 				
 		setUpAutoCompleteTextViews();
-		setUpNormalEditText();
+		editTextRoomCode = (EditText) findViewById(R.id.editTextRoomCode);
 	}
 
 	private void setUpAutoCompleteTextViews() {
@@ -55,48 +56,19 @@ public class BuildingSearch extends Activity {
 				this, android.R.layout.simple_list_item_1, buildingNames);
 		autoCompTextBuildings.setAdapter(adapterBuildingName);
 		autoCompTextBuildings.setThreshold(1);
-
-		// Need to do the same for the room code auto complete field.
-
-		autoCompTextRoomCode = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewRoomCode);
-
-		// Build string array of buildings from mybuildings list
-		List<String> roomCodes = new ArrayList<String>();
-		for (Buildings bldg : Menu.myBuildings) {
-			String broomcode = bldg.getRoomCodes();
-
-			// Need to correctly split the room codes from the XML file and take
-			// them in as separate entries in the ArrayList.
-			String[] splitRoomCodes = broomcode.split(",");
-			for (int i = 0; i < splitRoomCodes.length; i++)
-				roomCodes.add(splitRoomCodes[i].trim()); // Adds trimmed
-		}
-
-		// Create the adapter and set it to the AutoCompleteTextView
-		ArrayAdapter<String> adapterRoomCodes = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, roomCodes);
-		autoCompTextRoomCode.setAdapter(adapterRoomCodes);
-		autoCompTextRoomCode.setThreshold(1);
-	}
-
-	private void setUpNormalEditText() {
-
-		testingField = (EditText) findViewById(R.id.editTextNormalTV);
-		blah = testingField.getText().toString();
-		
-		
 	}
 
 	public void onClick_GetDirections(View v) {
 
 		// Launches the 'Other' activity and displays the directions.
 
-		String buildingName, RoomCode, currentLat, currentLng;
-
 		buildingName = autoCompTextBuildings.getText().toString();
-		RoomCode = autoCompTextRoomCode.getText().toString();
-
-		Buildings bn = getBuildingFromNameOrRoomCode(buildingName, RoomCode);
+		roomCode = editTextRoomCode.getText().toString().toUpperCase();
+		Location mylocation = Menu.getLocation();
+		
+		Buildings bn = getBuildingFromNameOrRoomCode(buildingName, roomCode);
+		
+		String showDirections = "Yes";
 
 		if (bn == null) {
 
@@ -104,8 +76,6 @@ public class BuildingSearch extends Activity {
 			Log.d("Devon", "Cannot find building name in list.");
 			return;
 		}
-		
-		Location mylocation = Menu.getLocation();
 		
 		if (mylocation == null) {
 			Toast.makeText(this, "Cannot retrieve current location, please wait and then try again.", Toast.LENGTH_LONG).show();
@@ -125,16 +95,17 @@ public class BuildingSearch extends Activity {
 		}
 		
 		Log.d("Devon", "Building name retrieved from textview: " + buildingName);
-		Log.d("Devon", "Room code retrieved from textview: " + RoomCode);
+		Log.d("Devon", "Room code retrieved from textview: " + roomCode);
 		Log.d("Devon", "Current Lat: " + currentLat + " Current Lng: " + currentLng);
-
-		Intent i = new Intent("com.example.gmaps.OTHER");
+		Log.d("Devon", "ShowDirections: " + showDirections);
+		
+		Intent i = new Intent("com.example.gmaps.GMAPS");
 
 		i.putExtra("LAT", bn.getLatitude()); // Building name will be blank (not null) if field is not in.
 		i.putExtra("LNG", bn.getLongitude()); // Room code will be blank (not null) if field is not filled in.
 		i.putExtra("CURRENTLAT", currentLat);
 		i.putExtra("CURRENTLNG", currentLng);
-
+		i.putExtra("showDirections", showDirections);
 		startActivity(i);
 	}
 
@@ -175,20 +146,36 @@ public class BuildingSearch extends Activity {
 	
 	private Buildings findBuildingFromRoomCode (String name) {
 		
-		//Log.d("Devon", "Room code is: " + name);
+		Log.d("Devon", "Room code entered is: " + name);
+		String roomCStart = null;
+		
+		// Only 4 building codes contains letters and numbers.
+		if (name.contains("LP1") || name.contains("LP2") || name.contains("HD3") || name.contains("HD7")) {
+			
+			roomCStart = name.substring(0,3);
+		}
+		
+		else {
+			// Regex to split the room code and only use letters to find within the XML list.
+			Pattern pat = Pattern.compile("^[A-Z]*");
+			Matcher match = pat.matcher(name);
+			while (match.find()) {
+				
+				roomCStart = match.group();
+			}
+		}
 		
 		for(Buildings bldg : Menu.myBuildings)
 		{
-			String rcode = bldg.getRoomCodes();
-			
-			//Log.d("Devon", "rcode in findLocationFromRoomCode is: " + rcode);
-			
-			if(rcode.contains(name))
-				return bldg;
+			String[] rcode = bldg.getRoomCodes();
+			for (String str : rcode) {
+				
+				if(str.equals(roomCStart)) {
+					Log.d("Devon", "Found room code: " + roomCStart);
+					return bldg;
+				}	
+			}
 		}
-		
 		return null;
 	}
-
-
 }

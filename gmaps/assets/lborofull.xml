@@ -4,235 +4,235 @@
 		<name>3D Design Building (LUSAD)</name>
 		<latitude>52.7672873229</latitude>
 		<longitude>-1.2193678169</longitude>
-		<roomcodes>a</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Administration 2</name>
 		<latitude>52.7650758989</latitude>
 		<longitude>-1.2310955721</longitude>
-		<roomcodes>b</roomcodes>
+		<roomcodes>V</roomcodes>
 	</building>
 	<building>
 		<name>Angela Marmont</name>
 		<latitude>52.7660945464</latitude>
 		<longitude>-1.229435985</longitude>
-		<roomcodes>c</roomcodes>
+		<roomcodes>ED</roomcodes>
 	</building>
 	<building>
 		<name>Ann Packer Building</name>
 		<latitude>52.7660861154</latitude>
 		<longitude>-1.2228569283</longitude>
-		<roomcodes>d</roomcodes>
+		<roomcodes>JJ</roomcodes>
 	</building>
 	<building>
 		<name>Arnold Hall (Sir) (Administration 1)</name>
 		<latitude>52.7650152914</latitude>
 		<longitude>-1.2304207338</longitude>
-		<roomcodes>e</roomcodes>
+		<roomcodes>M</roomcodes>
 	</building>
 	<building>
 		<name>Bridgeman Centre</name>
 		<latitude>52.7669188663</latitude>
 		<longitude>-1.2245946706</longitude>
-		<roomcodes>f</roomcodes>
+		<roomcodes>XX</roomcodes>
 	</building>
 	<building>
 		<name>Brockington Building</name>
 		<latitude>52.7656776717</latitude>
 		<longitude>-1.2273929176</longitude>
-		<roomcodes>g</roomcodes>
+		<roomcodes>B</roomcodes>
 	</building>
 	<building>
 		<name>Brockington Extension</name>
 		<latitude>52.7657871026</latitude>
 		<longitude>-1.2278656552</longitude>
-		<roomcodes>h</roomcodes>
+		<roomcodes>U</roomcodes>
 	</building>
 	<building>
 		<name>Butler Court</name>
 		<latitude>52.7666099286</latitude>
 		<longitude>-1.2221451836</longitude>
-		<roomcodes>i</roomcodes>
+		<roomcodes>BC</roomcodes>
 	</building>
 	<building>
 		<name>Cayley Hall</name>
 		<latitude>52.7669534462</latitude>
 		<longitude>-1.2342221985</longitude>
-		<roomcodes>j</roomcodes>
+		<roomcodes>CA</roomcodes>
 	</building>
 	<building>
 		<name>Cayley Rutherford Dining Room</name>
 		<latitude>52.7664340002</latitude>
 		<longitude>-1.2339711456</longitude>
-		<roomcodes>k</roomcodes>
+		<roomcodes>CR</roomcodes>
 	</building>
 	<building>
 		<name>Charnwood Wing</name>
 		<latitude>52.7593337822</latitude>
 		<longitude>-1.2472720553</longitude>
-		<roomcodes>l</roomcodes>
+		<roomcodes>MBC</roomcodes>
 	</building>
 	<building>
 		<name>Chemistry Building</name>
 		<latitude>52.7649445833</latitude>
 		<longitude>-1.2283063422</longitude>
-		<roomcodes>m</roomcodes>
+		<roomcodes>F</roomcodes>
 	</building>
 	<building>
 		<name>Clyde Williams Building</name>
 		<latitude>52.7678826066</latitude>
 		<longitude>-1.2236008277</longitude>
-		<roomcodes>n</roomcodes>
+		<roomcodes>HE</roomcodes>
 	</building>
 	<building>
 		<name>Cope Auditorium</name>
 		<latitude>52.7676474707</latitude>
 		<longitude>-1.221124251</longitude>
-		<roomcodes>o</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Counselling Service (Red House)</name>
 		<latitude>52.7638330788</latitude>
 		<longitude>-1.2294858189</longitude>
-		<roomcodes>p</roomcodes>
+		<roomcodes>HD3</roomcodes>
 	</building>
 	<building>
 		<name>Dan Maskell Tennis Centre</name>
 		<latitude>52.7655479415</latitude>
 		<longitude>-1.220851145</longitude>
-		<roomcodes>q</roomcodes>
+		<roomcodes>TC</roomcodes>
 	</building>
 	<building>
 		<name>Dance Studio</name>
 		<latitude>52.7667329903</latitude>
 		<longitude>-1.2235933089</longitude>
-		<roomcodes>r</roomcodes>
+		<roomcodes>LL</roomcodes>
 	</building>
 	<building>
 		<name>David Collett Hall (West Park)</name>
 		<latitude>52.7625054577</latitude>
 		<longitude>-1.2389232237</longitude>
-		<roomcodes>s</roomcodes>
+		<roomcodes>DH</roomcodes>
 	</building>
 	<building>
 		<name>David Collett –G Block (Village Park)</name>
 		<latitude>52.7639164307</latitude>
 		<longitude>-1.2354538927</longitude>
-		<roomcodes>t</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>David Davies (Sir) Building</name>
 		<latitude>52.7617364382</latitude>
 		<longitude>-1.2408261318</longitude>
-		<roomcodes>u</roomcodes>
+		<roomcodes>W</roomcodes>
 	</building>
 	<building>
 		<name>David Wallace (Sir) Building</name>
 		<latitude>52.7684408852</latitude>
 		<longitude>-1.2240520728</longitude>
-		<roomcodes>v</roomcodes>
+		<roomcodes>SP</roomcodes>
 	</building>
 	<building>
 		<name>Denis Rooke (Sir) Building</name>
 		<latitude>52.7585518482</latitude>
 		<longitude>-1.2459757059</longitude>
-		<roomcodes>w</roomcodes>
+		<roomcodes>SDR</roomcodes>
 	</building>
 	<building>
 		<name>Edward Barnsley Building</name>
 		<latitude>52.7670646208</latitude>
 		<longitude>-1.2206039693</longitude>
-		<roomcodes>x</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Edward Herbert Building (EHB)</name>
 		<latitude>52.764933187</latitude>
 		<longitude>-1.2294653517</longitude>
-		<roomcodes>y</roomcodes>
+		<roomcodes>J</roomcodes>
 	</building>
 	<building>
 		<name>Eggington Court</name>
 		<latitude>52.7632527438</latitude>
 		<longitude>-1.2256720726</longitude>
-		<roomcodes>z</roomcodes>
+		<roomcodes>EC</roomcodes>
 	</building>
 	<building>
 		<name>Elvyn Richards</name>
 		<latitude>52.7649131279</latitude>
 		<longitude>-1.2377886765</longitude>
-		<roomcodes>A</roomcodes>
+		<roomcodes>ER</roomcodes>
 	</building>
 	<building>
 		<name>Fairbairn Building (LUSAD)</name>
 		<latitude>52.7696660636</latitude>
 		<longitude>-1.2185016768</longitude>
-		<roomcodes>B</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Falkner Court</name>
 		<latitude>52.7630162114</latitude>
 		<longitude>-1.2264246783</longitude>
-		<roomcodes>C</roomcodes>
+		<roomcodes>FL</roomcodes>
 	</building>
 	<building>
 		<name>Faraday Hall</name>
 		<latitude>52.7647846038</latitude>
 		<longitude>-1.234880008</longitude>
-		<roomcodes>D</roomcodes>
+		<roomcodes>FA</roomcodes>
 	</building>
 	<building>
 		<name>Faraday Royce Dining Room</name>
 		<latitude>52.7654216031</latitude>
 		<longitude>-1.2354790852</longitude>
-		<roomcodes>E</roomcodes>
+		<roomcodes>FR</roomcodes>
 	</building>
 	<building>
 		<name>Fine Art Building (LUSAD)</name>
 		<latitude>52.7675368625</latitude>
 		<longitude>-1.2185859362</longitude>
-		<roomcodes>F</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Frank Gibb (Sir) Building</name>
 		<latitude>52.7629262467</latitude>
 		<longitude>-1.2409633325</longitude>
-		<roomcodes>G</roomcodes>
+		<roomcodes>RT</roomcodes>
 	</building>
 	<building>
 		<name>Frank Gibb (Sir) Laboratories</name>
 		<latitude>52.7635949564</latitude>
 		<longitude>-1.2396023237</longitude>
-		<roomcodes>H</roomcodes>
+		<roomcodes>RL</roomcodes>
 	</building>
 	<building>
 		<name>Frederick Street (LUSAD)</name>
 		<latitude>52.771649734</latitude>
 		<longitude>-1.2103721459</longitude>
-		<roomcodes>I</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>G Block</name>
 		<latitude>52.7648684139</latitude>
 		<longitude>-1.2287121575</longitude>
-		<roomcodes>J</roomcodes>
+		<roomcodes>G</roomcodes>
 	</building>
 	<building>
 		<name>GG Block</name>
 		<latitude>52.7652125779</latitude>
 		<longitude>-1.2279404579</longitude>
-		<roomcodes>K</roomcodes>
+		<roomcodes>GG</roomcodes>
 	</building>
 	<building>
 		<name>Garendon Wing</name>
 		<latitude>52.7586161494</latitude>
 		<longitude>-1.248037922</longitude>
-		<roomcodes>L</roomcodes>
+		<roomcodes>MBG</roomcodes>
 	</building>
 	<building>
 		<name>Graham Oldham Building</name>
 		<latitude>52.7644923246</latitude>
 		<longitude>-1.2287730981</longitude>
-		<roomcodes>M</roomcodes>
+		<roomcodes>H</roomcodes>
 	</building>
 	<building>
 		<name>Haslegrave Building</name>
@@ -244,408 +244,408 @@
 		<name>Haslegrave Pavilion</name>
 		<latitude>52.7669240579</latitude>
 		<longitude>-1.2294715326</longitude>
-		<roomcodes>O</roomcodes>
+		<roomcodes>HP</roomcodes>
 	</building>
 	<building>
 		<name>Hazlerigg building</name>
 		<latitude>52.7679563602</latitude>
 		<longitude>-1.2288247004</longitude>
-		<roomcodes>P</roomcodes>
+		<roomcodes>HA</roomcodes>
 	</building>
 	<building>
 		<name>Hazlerigg-Rutland Hall</name>
 		<latitude>52.7654392448</latitude>
 		<longitude>-1.2375894861</longitude>
-		<roomcodes>Q</roomcodes>
+		<roomcodes>HR</roomcodes>
 	</building>
 	<building>
 		<name>Henry Ford College</name>
 		<latitude>52.7602828183</latitude>
 		<longitude>-1.2432942841</longitude>
-		<roomcodes>R</roomcodes>
+		<roomcodes>FO</roomcodes>
 	</building>
 	<building>
 		<name>Herbert Manzoni Building</name>
 		<latitude>52.7656007862</latitude>
 		<longitude>-1.2301173056</longitude>
-		<roomcodes>S</roomcodes>
+		<roomcodes>K</roomcodes>
 	</building>
 	<building>
 		<name>Hockey Pavilion Central</name>
 		<latitude>52.7678360033</latitude>
 		<longitude>-1.2324442954</longitude>
-		<roomcodes>T</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Holt (The)</name>
 		<latitude>52.761720012</latitude>
 		<longitude>-1.2193737013</longitude>
-		<roomcodes>U</roomcodes>
+		<roomcodes>HO</roomcodes>
 	</building>
 	<building>
 		<name>Holywell Building</name>
 		<latitude>52.7578514288</latitude>
 		<longitude>-1.2469336289</longitude>
-		<roomcodes>V</roomcodes>
+		<roomcodes>HB</roomcodes>
 	</building>
 	<building>
 		<name>Holywell Drive 11(White House)</name>
 		<latitude>52.7635603876</latitude>
 		<longitude>-1.2301429085</longitude>
-		<roomcodes>W</roomcodes>
+		<roomcodes>AA</roomcodes>
 	</building>
 	<building>
 		<name>Holywell Drive 7</name>
 		<latitude>52.7636724992</latitude>
 		<longitude>-1.2298126615</longitude>
-		<roomcodes>X</roomcodes>
+		<roomcodes>HD7</roomcodes>
 	</building>
 	<building>
 		<name>Hub (The)</name>
 		<latitude>52.7644973147</latitude>
 		<longitude>-1.2374474158</longitude>
-		<roomcodes>Y</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Imago Sales Office</name>
 		<latitude>52.7646758975</latitude>
 		<longitude>-1.2341185898</longitude>
-		<roomcodes>Z</roomcodes>
+		<roomcodes>GH</roomcodes>
 	</building>
 	<building>
 		<name>Imago Services</name>
 		<latitude>52.765202424</latitude>
 		<longitude>-1.2317752889</longitude>
-		<roomcodes>aa</roomcodes>
+		<roomcodes>RC</roomcodes>
 	</building>
 	<building>
 		<name>Imago at Burleigh Court</name>
 		<latitude>52.7616063725</latitude>
 		<longitude>-1.238974105</longitude>
-		<roomcodes>bb</roomcodes>
+		<roomcodes>BU</roomcodes>
 	</building>
 	<building>
 		<name>International Office</name>
 		<latitude>52.7648240791</latitude>
 		<longitude>-1.2311336208</longitude>
-		<roomcodes>cc</roomcodes>
+		<roomcodes>LB</roomcodes>
 	</building>
 	<building>
 		<name>James France Building</name>
 		<latitude>52.7649330095</latitude>
 		<longitude>-1.2270350324</longitude>
-		<roomcodes>dd</roomcodes>
+		<roomcodes>CC,D</roomcodes>
 	</building>
 	<building>
 		<name>John Beckwith (Sir), Centre for Sport</name>
 		<latitude>52.7676338085</latitude>
 		<longitude>-1.2243239721</longitude>
-		<roomcodes>ee</roomcodes>
+		<roomcodes>JB</roomcodes>
 	</building>
 	<building>
 		<name>John Clements Building</name>
 		<latitude>52.7665325008</latitude>
 		<longitude>-1.2240878751</longitude>
-		<roomcodes>ff</roomcodes>
+		<roomcodes>MM</roomcodes>
 	</building>
 	<building>
 		<name>John Cooper Building</name>
 		<latitude>52.7663440717</latitude>
 		<longitude>-1.2248154151</longitude>
-		<roomcodes>gg</roomcodes>
+		<roomcodes>YY</roomcodes>
 	</building>
 	<building>
 		<name>John Ferguson (Sir) Building</name>
 		<latitude>52.7667896684</latitude>
 		<longitude>-1.2309787272</longitude>
-		<roomcodes>hh</roomcodes>
+		<roomcodes>NCA</roomcodes>
 	</building>
 	<building>
 		<name>John Hardie Building</name>
 		<latitude>52.7670713433</latitude>
 		<longitude>-1.2237270107</longitude>
-		<roomcodes>ii</roomcodes>
+		<roomcodes>QQ</roomcodes>
 	</building>
 	<building>
 		<name>John Phillips Court</name>
 		<latitude>52.766395936</latitude>
 		<longitude>-1.2364220878</longitude>
-		<roomcodes>jj</roomcodes>
+		<roomcodes>JP</roomcodes>
 	</building>
 	<building>
 		<name>John Pickford</name>
 		<latitude>52.7639237011</latitude>
 		<longitude>-1.2398340681</longitude>
-		<roomcodes>kk</roomcodes>
+		<roomcodes>HH</roomcodes>
 	</building>
 	<building>
 		<name>Keith Green Building</name>
 		<latitude>52.7620345695</latitude>
 		<longitude>-1.2395961027</longitude>
-		<roomcodes>ll</roomcodes>
+		<roomcodes>KG</roomcodes>
 	</building>
 	<building>
 		<name>Loughborough Innovation Centre</name>
 		<latitude>52.7643883271</latitude>
 		<longitude>-1.2275090364</longitude>
-		<roomcodes>mm</roomcodes>
+		<roomcodes>E</roomcodes>
 	</building>
 	<building>
 		<name>Loughborough Students’ Union</name>
 		<latitude>52.769273589</latitude>
 		<longitude>-1.2278282638</longitude>
-		<roomcodes>nn</roomcodes>
+		<roomcodes>SU</roomcodes>
 	</building>
 	<building>
 		<name>Loughborough University Fitness Suite (LUFS)</name>
 		<latitude>52.7652408579</latitude>
 		<longitude>-1.2330841454</longitude>
-		<roomcodes>oo</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Martin Hall</name>
 		<latitude>52.767137429</latitude>
 		<longitude>-1.2228006135</longitude>
-		<roomcodes>pp</roomcodes>
+		<roomcodes>NN</roomcodes>
 	</building>
 	<building>
 		<name>Matthew Arnold Building</name>
 		<latitude>52.7659372404</latitude>
 		<longitude>-1.2244174986</longitude>
-		<roomcodes>qq</roomcodes>
+		<roomcodes>ZZ</roomcodes>
 	</building>
 	<building>
 		<name>Medical Centre</name>
 		<latitude>52.7652555306</latitude>
 		<longitude>-1.2322615872</longitude>
-		<roomcodes>rr</roomcodes>
+		<roomcodes>MC</roomcodes>
 	</building>
 	<building>
 		<name>Michael Pearson (East)</name>
 		<latitude>52.7612555806</latitude>
 		<longitude>-1.2474984686</longitude>
-		<roomcodes>ss</roomcodes>
+		<roomcodes>LP1</roomcodes>
 	</building>
 	<building>
 		<name>Michael Pearson (West)</name>
 		<latitude>52.7612725554</latitude>
 		<longitude>-1.2481170456</longitude>
-		<roomcodes>tt</roomcodes>
+		<roomcodes>LP2</roomcodes>
 	</building>
 	<building>
 		<name>Mumford Arts Centre and Pottery Cottage</name>
 		<latitude>52.7680463649</latitude>
 		<longitude>-1.2340090861</longitude>
-		<roomcodes>uu</roomcodes>
+		<roomcodes>SA</roomcodes>
 	</building>
 	<building>
 		<name>Music Centre</name>
 		<latitude>52.7664132831</latitude>
 		<longitude>-1.2233459017</longitude>
-		<roomcodes>vv</roomcodes>
+		<roomcodes>KK</roomcodes>
 	</building>
 	<building>
 		<name>Netball / Badminton Centre</name>
 		<latitude>52.7659282599</latitude>
 		<longitude>-1.2215208506</longitude>
-		<roomcodes>ww</roomcodes>
+		<roomcodes>NB</roomcodes>
 	</building>
 	<building>
 		<name>Paula Radcliffe Pavilion</name>
 		<latitude>52.7693729115</latitude>
 		<longitude>-1.2292602618</longitude>
-		<roomcodes>xx</roomcodes>
+		<roomcodes>PA</roomcodes>
 	</building>
 	<building>
 		<name>Performance Centre</name>
 		<latitude>52.7680001578</latitude>
 		<longitude>-1.2250170796</longitude>
-		<roomcodes>yy</roomcodes>
+		<roomcodes>UU</roomcodes>
 	</building>
 	<building>
 		<name>Pilkington Library</name>
 		<latitude>52.7633053171</latitude>
 		<longitude>-1.237191405</longitude>
-		<roomcodes>zz</roomcodes>
+		<roomcodes>X</roomcodes>
 	</building>
 	<building>
 		<name>Purple Onion</name>
 		<latitude>52.7660984581</latitude>
 		<longitude>-1.2340574018</longitude>
-		<roomcodes>AA</roomcodes>
+		<roomcodes>PO</roomcodes>
 	</building>
 	<building>
 		<name>Richard Morris (Sir) Building</name>
 		<latitude>52.7672233347</latitude>
 		<longitude>-1.2279870715</longitude>
-		<roomcodes>BB</roomcodes>
+		<roomcodes>BE</roomcodes>
 	</building>
 	<building>
 		<name>Robert Bakewell Hall</name>
 		<latitude>52.7643972539</latitude>
 		<longitude>-1.2386718082</longitude>
-		<roomcodes>CC</roomcodes>
+		<roomcodes>RB</roomcodes>
 	</building>
 	<building>
 		<name>Royce Hall</name>
 		<latitude>52.7654394468</latitude>
 		<longitude>-1.2364782287</longitude>
-		<roomcodes>DD</roomcodes>
+		<roomcodes>RO</roomcodes>
 	</building>
 	<building>
 		<name>Rutherford Hall</name>
 		<latitude>52.7663145928</latitude>
 		<longitude>-1.2354261074</longitude>
-		<roomcodes>EE</roomcodes>
+		<roomcodes>RU</roomcodes>
 	</building>
 	<building>
 		<name>Rutland Building</name>
 		<latitude>52.7685782918</latitude>
 		<longitude>-1.2290484486</longitude>
-		<roomcodes>FF</roomcodes>
+		<roomcodes>RH</roomcodes>
 	</building>
 	<building>
 		<name>Rutland Lodge</name>
 		<latitude>52.7695264654</latitude>
 		<longitude>-1.2288276455</longitude>
-		<roomcodes>GG</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>S Building</name>
 		<latitude>52.7621650474</latitude>
 		<longitude>-1.2415798183</longitude>
-		<roomcodes>HH</roomcodes>
+		<roomcodes>S</roomcodes>
 	</building>
 	<building>
 		<name>Schofield Building</name>
 		<latitude>52.7662544875</latitude>
 		<longitude>-1.2282758574</longitude>
-		<roomcodes>II</roomcodes>
+		<roomcodes>A</roomcodes>
 	</building>
 	<building>
 		<name>Seb Coe High Performance Athletics Centre (HiPAC)</name>
 		<latitude>52.7681986134</latitude>
 		<longitude>-1.2307648775</longitude>
-		<roomcodes>JJ</roomcodes>
+		<roomcodes>HPC</roomcodes>
 	</building>
 	<building>
 		<name>Security Gatehouse</name>
 		<latitude>52.7688758115</latitude>
 		<longitude>-1.2265212815</longitude>
-		<roomcodes>KK</roomcodes>
+		<roomcodes>SE</roomcodes>
 	</building>
 	<building>
 		<name>SportPark </name>
 		<latitude>52.7618460621</latitude>
 		<longitude>-1.2454262388</longitude>
-		<roomcodes>LL</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Stewart Mason Building</name>
 		<latitude>52.7653343209</latitude>
 		<longitude>-1.2267735928</longitude>
-		<roomcodes>MM</roomcodes>
+		<roomcodes>SMB</roomcodes>
 	</building>
 	<building>
 		<name>Stewart Miller Building</name>
 		<latitude>52.7618181366</latitude>
 		<longitude>-1.242669372</longitude>
-		<roomcodes>NN</roomcodes>
+		<roomcodes>SM</roomcodes>
 	</building>
 	<building>
 		<name>Student Services</name>
 		<latitude>52.7649552941</latitude>
 		<longitude>-1.231294346</longitude>
-		<roomcodes>OO</roomcodes>
+		<roomcodes>SS</roomcodes>
 	</building>
 	<building>
 		<name>Swimming Pool</name>
 		<latitude>52.7695156752</latitude>
 		<longitude>-1.225819261</longitude>
-		<roomcodes>PP</roomcodes>
+		<roomcodes>SW</roomcodes>
 	</building>
 	<building>
 		<name>Telford Hall</name>
 		<latitude>52.7656859768</latitude>
 		<longitude>-1.2334900573</longitude>
-		<roomcodes>QQ</roomcodes>
+		<roomcodes>TE</roomcodes>
 	</building>
 	<building>
 		<name>Tennis Centre (The)</name>
 		<latitude>52.7651742497</latitude>
 		<longitude>-1.2202313161</longitude>
-		<roomcodes>RR</roomcodes>
+		<roomcodes>LT</roomcodes>
 	</building>
 	<building>
 		<name>Towers </name>
 		<latitude>52.7661410021</latitude>
 		<longitude>-1.2238864373</longitude>
-		<roomcodes>SS</roomcodes>
+		<roomcodes>TO</roomcodes>
 	</building>
 	<building>
 		<name>Towers Dining Room and East Park Bar</name>
 		<latitude>52.7657512097</latitude>
 		<longitude>-1.2234384094</longitude>
-		<roomcodes>TT</roomcodes>
+		<roomcodes>TO,DR</roomcodes>
 	</building>
 	<building>
 		<name>University Lodge</name>
 		<latitude>52.7637062941</latitude>
 		<longitude>-1.2352943569</longitude>
-		<roomcodes>UU</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Victory Hall</name>
 		<latitude>52.7673356197</latitude>
 		<longitude>-1.223924927</longitude>
-		<roomcodes>VV</roomcodes>
+		<roomcodes>WW</roomcodes>
 	</building>
 	<building>
 		<name>Village Restaurant / Elvyn Richards Dining Room</name>
 		<latitude>52.7638737534</latitude>
 		<longitude>-1.2375453851</longitude>
-		<roomcodes>WW</roomcodes>
+		<roomcodes>ER</roomcodes>
 	</building>
 	<building>
 		<name>WEDC 1, 2, 3</name>
 		<latitude>52.7634513691</latitude>
 		<longitude>-1.2407272064</longitude>
-		<roomcodes>XX</roomcodes>
+		<roomcodes>PP</roomcodes>
 	</building>
 	<building>
 		<name>Wavy Top</name>
 		<latitude>52.765702942</latitude>
 		<longitude>-1.2285437994</longitude>
-		<roomcodes>YY</roomcodes>
+		<roomcodes>L</roomcodes>
 	</building>
 	<building>
 		<name>Whitworth Building</name>
 		<latitude>52.7659493577</latitude>
 		<longitude>-1.2347119716</longitude>
-		<roomcodes>ZZ</roomcodes>
+		<roomcodes>WH</roomcodes>
 	</building>
 	<building>
 		<name>William Morris Building (1)</name>
 		<latitude>52.770508045</latitude>
 		<longitude>-1.2290801216</longitude>
-		<roomcodes>aaa</roomcodes>
+		<roomcodes>MR</roomcodes>
 	</building>
 	<building>
 		<name>William Morris Building (2)</name>
 		<latitude>52.7713781249</latitude>
 		<longitude>-1.2280947039</longitude>
-		<roomcodes>bbb</roomcodes>
+		<roomcodes></roomcodes>
 	</building>
 	<building>
 		<name>Wolfson Annex</name>
 		<latitude>52.7632207519</latitude>
 		<longitude>-1.2396759638</longitude>
-		<roomcodes>ccc</roomcodes>
+		<roomcodes>TT</roomcodes>
 	</building>
 	<building>
 		<name>Wolfson Building</name>
 		<latitude>52.7627410039</latitude>
 		<longitude>-1.2400842929</longitude>
-		<roomcodes>ddd</roomcodes>
+		<roomcodes>T,TW</roomcodes>
 	</building>
 </loughborough>

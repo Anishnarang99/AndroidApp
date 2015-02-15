@@ -20,9 +20,10 @@ public class Buildings {
 		return this.buildingName;
 	}
 	
-	public String getRoomCodes()
+	public String[] getRoomCodes()
 	{
-		return this.roomCodes;
+		String[] splitRoomCodes = roomCodes.split(",");
+		return splitRoomCodes;
 	}
 	
 	public String getLatitude()

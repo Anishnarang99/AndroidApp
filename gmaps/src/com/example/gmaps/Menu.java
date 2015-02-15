@@ -39,6 +39,7 @@ public class Menu extends Activity {
 						"News", "Events", "Library", "StaffSearch", "PcLabs", "SafetyToolbox"};
 	
 	public static List<Buildings> myBuildings = new ArrayList<Buildings>();
+	public static List<Lecturers> myLecturer = new ArrayList<Lecturers>();
 	
 	// Variables to get current location
 	static Location mylocation;
@@ -65,11 +66,11 @@ public class Menu extends Activity {
 	    		
 	    		try {
 	    			
-	    		Class ourClass = Class.forName("com.example.gmaps." + appActivity);
-	    		Log.d("Devon", "Class is: com.example.gmaps." + appActivity);
-	    		
-	    		Intent ourIntent = new Intent(Menu.this, ourClass);
-	    		startActivity(ourIntent);
+		    		Class ourClass = Class.forName("com.example.gmaps." + appActivity);
+		    		Log.d("Devon", "Class is: com.example.gmaps." + appActivity);
+		    		
+		    		Intent ourIntent = new Intent(Menu.this, ourClass);
+		    		startActivity(ourIntent);
 	    		}
 	    		
 	    		catch (ClassNotFoundException e) {
@@ -80,6 +81,7 @@ public class Menu extends Activity {
 	    });
 	    
 		BuildingsXML(); // Reading XML file containing Loughborough building names.
+		StaffSearchXML(); // Reading XML file containing Loughborough EESE staff names.
 		
 		getCurrentLocation(); // Gets current location of phone to determine route directions.
 	}
@@ -112,7 +114,7 @@ public class Menu extends Activity {
 	}
 	
 	// Loads the data about all the buildings from an XML file.
-	public void BuildingsXML() {
+	private void BuildingsXML() {
 
 		try {
 			
@@ -130,7 +132,7 @@ public class Menu extends Activity {
 
 			doc.getDocumentElement().normalize();
 			  
-			Log.d("Devon", "Root element: " + doc.getDocumentElement().getNodeName());
+			//Log.d("Devon", "Root element: " + doc.getDocumentElement().getNodeName());
 			  
 			NodeList nList = doc.getElementsByTagName("building");
 			  
@@ -138,7 +140,7 @@ public class Menu extends Activity {
 			  
 				Node nNode = nList.item(i);
 			  
-				Log.d("Devon", "Current Element: " + nNode.getNodeName());
+				//Log.d("Devon", "Current Element: " + nNode.getNodeName());
 			  
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 			  
@@ -146,22 +148,18 @@ public class Menu extends Activity {
 			  
 					// Log.d("Devon","Id : " + eElement.getAttribute("id"));
 					String BuildingName = eElement.getElementsByTagName("name").item(0).getTextContent();
-					Log.d("Devon", "Building Name: " + BuildingName);
+					//Log.d("Devon", "Building Name: " + BuildingName);
 					String BuildingLat = eElement.getElementsByTagName("latitude").item(0).getTextContent();
-					Log.d("Devon", "Latitude: " + BuildingLat);
+					//Log.d("Devon", "Latitude: " + BuildingLat);
 					String BuildingLng = eElement.getElementsByTagName("longitude").item(0).getTextContent();
-					Log.d("Devon", "Longitude: " + BuildingLng);
+					//Log.d("Devon", "Longitude: " + BuildingLng);
 					String RoomCodes = eElement.getElementsByTagName("roomcodes").item(0).getTextContent();
-					Log.d("Devon", "Room codes: " + RoomCodes);
-					
-					// Converts the co-ords from strings into longs.
-					//long BuildingLat = Long.parseLong(BuildingLatitude);//.longValue();
-					//long BuildingLng = Long.parseLong(BuildingLongitude);//.longValue();
+					//Log.d("Devon", "Room codes: " + RoomCodes);
 					
 					// Creates an object
 					Buildings building = new Buildings(BuildingName, RoomCodes, BuildingLat, BuildingLng);
 					myBuildings.add(building);
-					Log.d("Devon", "Added building object called: " + building.getBuildingName());
+					//Log.d("Devon", "Added building object called: " + building.getBuildingName());
 				}
 			}
 		}
@@ -172,13 +170,69 @@ public class Menu extends Activity {
 			    }
 	}	
 	
+	private void StaffSearchXML() {
+
+		try {
+
+			// Take xml file via input stream from the assets folder.
+			InputStream in_s = getApplicationContext().getAssets().open("staffsearch.xml");
+			
+
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(in_s);
+
+			// optional, but recommended
+			// read this -
+			// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+
+			doc.getDocumentElement().normalize();
+
+			//Log.d("Devon", "Root element: " + doc.getDocumentElement().getNodeName());
+
+			NodeList nList = doc.getElementsByTagName("person");
+
+			for (int i = 0; i < nList.getLength(); i++) {
+
+				Node nNode = nList.item(i);
+
+				//Log.d("Devon", "Current Element: " + nNode.getNodeName());
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element eElement = (Element) nNode;
+
+					// Log.d("Devon","Id : " + eElement.getAttribute("id"));
+					String PersonName = eElement.getElementsByTagName("name").item(0).getTextContent();
+					//Log.d("Devon", "Person Name: " + PersonName);
+					
+					String Dept = eElement.getElementsByTagName("department").item(0).getTextContent();
+					//Log.d("Devon", "Department: " + Dept);
+					
+					String Email = eElement.getElementsByTagName("email").item(0).getTextContent();
+					//Log.d("Devon", "Email: " + Email);
+					
+					String Extension = eElement.getElementsByTagName("extension").item(0).getTextContent();
+					//Log.d("Devon", "Extension: " + Extension);
+					
+					// Creates an object
+					Lecturers lecturers = new Lecturers(PersonName, Dept, Email, Extension);
+					myLecturer.add(lecturers);
+					
+					//Log.d("Devon", "Added lecturer: " + lecturers.getLecturerName());
+				}
+			}
+		}
+
+		catch (Exception e) {
+			Log.d("Devon", "In the log");
+			e.printStackTrace();
+		}
+	}
+
 	public void getCurrentLocation() {
 
 		lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-		//Log.d("Devon", "Passive provider enabled: " + lm.isProviderEnabled(LocationManager.PASSIVE_PROVIDER));
-		//Log.d("Devon", "GPS provider enabled: " + lm.isProviderEnabled(LocationManager.GPS_PROVIDER));
-		//Log.d("Devon", "Network provider enabled: " + lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER));
 
 		myListener = new LocationListener() {
 			

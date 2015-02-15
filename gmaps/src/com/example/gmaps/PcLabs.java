@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -49,7 +50,15 @@ public class PcLabs extends Activity implements OnClickListener {
 		ourBrowser.getSettings().setUseWideViewPort(true);
 		ourBrowser.getSettings().setBuiltInZoomControls(true);
 		ourBrowser.getSettings().setDisplayZoomControls(false);
-		ourBrowser.setWebViewClient(new WebViewClient());
+		ourBrowser.setWebChromeClient(new WebChromeClient());
+		ourBrowser.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url)
+            {
+                view.loadUrl(url);
+                return true;
+            }
+        });
 		ourBrowser.setInitialScale(100);
 		ourBrowser.loadUrl("http://www.lboro.ac.uk/services/it/labs/labs-availability/");
 	}

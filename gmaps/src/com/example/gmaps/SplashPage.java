@@ -30,4 +30,11 @@ public class SplashPage extends Activity {
 		
 		timer.start();
 	}
+	
+	@Override
+	protected void onPause() {
+		
+		super.onPause();
+		finish();
+	}
 }

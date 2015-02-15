@@ -1,9 +1,12 @@
 package com.example.gmaps;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,6 +52,8 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		
+		String SecurityNumber;
+		String NHSDirectNumber;
 		switch (v.getId()) {
 
 		case R.id.buttonFlashlight:
@@ -67,12 +72,32 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 
 		case R.id.buttonCallSecurity:
 			
+			// SecurityNumber = "456852"; // Fake security number as a place holder.
+			SecurityNumber = "0800 526966"; // Real security number to change to when app goes live.
 			
+			try {
+			    Intent my_callIntent = new Intent(Intent.ACTION_CALL);
+			    // Need "tel:" there to make a call
+			    my_callIntent.setData(Uri.parse("tel:"+ SecurityNumber));
+			    startActivity(my_callIntent);
+			} catch (ActivityNotFoundException e) {
+			    Toast.makeText(getApplicationContext(), "Error in your phone call" + e.getMessage(), Toast.LENGTH_LONG).show();
+			}
 			break;
 
 		case R.id.buttonCallNHSDirect:
 
+			// NHSDirectNumber = "0123456"; // Fake NHS Direct number as a place holder.
+			NHSDirectNumber = "111"; // Real NHS Direct number to change to when app goes live.
 			
+			try {
+			    Intent my_callIntent = new Intent(Intent.ACTION_CALL);
+			    // Need "tel:" there to make a call
+			    my_callIntent.setData(Uri.parse("tel:"+ NHSDirectNumber));
+			    startActivity(my_callIntent);
+			} catch (ActivityNotFoundException e) {
+			    Toast.makeText(getApplicationContext(), "Error in your phone call" + e.getMessage(), Toast.LENGTH_LONG).show();
+			}
 			break;
 		}
 	}

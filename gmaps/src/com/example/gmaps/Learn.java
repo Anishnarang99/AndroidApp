@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -49,12 +50,14 @@ public class Learn extends Activity implements OnClickListener {
 		ourBrowser.getSettings().setUseWideViewPort(true);
 		ourBrowser.getSettings().setBuiltInZoomControls(true);
 		ourBrowser.getSettings().setDisplayZoomControls(false);
+		//ourBrowser.setWebChromeClient(new WebChromeClient());
 		ourBrowser.setWebViewClient(new WebViewClient(){
 		    
 		    public boolean shouldOverrideUrlLoading(WebView view, String url) {
 		        if (url.endsWith(".pdf")) {
 		            
 		        	startActivity(new Intent (Intent.ACTION_VIEW, Uri.parse(url)));
+		        	//view.loadUrl(url);
 		            return true;
 		        }
 		        return false;

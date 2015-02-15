@@ -9,6 +9,73 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Staff Search - In Progress" />
+        android:text="Staff Search" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/textViewSearchLecturerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search by Lecturer Name:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextViewLecturerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Lecturer Name"
+        android:inputType="textImeMultiLine|textCapWords" />
+
+    <Button
+        android:id="@+id/buttonFindLecturer"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:onClick="onClick_FindLecturer"
+        android:text="Find Lecturer" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/textViewLecturerDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lecturer Details:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewLecturerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lecturer Name:" />
+
+    <TextView
+        android:id="@+id/textViewLecturerDept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Department:" />
+
+    <TextView
+        android:id="@+id/textViewLecturerEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:" />
+
+    <TextView
+        android:id="@+id/textViewLecturerExtension"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Extension:" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </Space>
 
 </LinearLayout>

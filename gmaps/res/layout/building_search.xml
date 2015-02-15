@@ -31,8 +31,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Building Name"
-        android:inputType="textImeMultiLine|textCapWords" >
-    </AutoCompleteTextView>
+        android:inputType="textImeMultiLine|textCapWords" />
 
     <TextView
         android:id="@+id/textViewRoomCode"
@@ -41,25 +40,12 @@
         android:text="Search by Room Code:"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextViewRoomCode"
+    <EditText
+        android:id="@+id/editTextRoomCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Room Code"
-        android:inputType="textImeMultiLine|textCapWords" />
-
-    <TextView
-        android:id="@+id/textViewNormalTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Normal Text View" />
-
-    <EditText
-        android:id="@+id/editTextNormalTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10" />
+        android:hint="Room Code" />
 
     <Button
         android:id="@+id/buttonGetDirections"
