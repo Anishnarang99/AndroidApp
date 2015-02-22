@@ -1,5 +1,9 @@
 package com.example.gmaps;
 
+import com.example.gmaps.R;
+import com.example.gmaps.R.id;
+import com.example.gmaps.R.layout;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -85,5 +89,11 @@ public class PcLabs extends Activity implements OnClickListener {
 			break;
 		}
 	}
-
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent i = new Intent("com.example.gmaps.MENU");
+		startActivity(i);
+	}
 }

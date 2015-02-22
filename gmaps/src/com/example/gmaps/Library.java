@@ -1,6 +1,12 @@
 package com.example.gmaps;
 
+import com.example.gmaps.R;
+import com.example.gmaps.R.id;
+
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,14 +26,34 @@ public class Library extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-
-		// Make the activity fullscreen - Make sure you set content view after making full screen.
+		
+		launchInChrome();
+		
+/*		// Make the activity fullscreen - Make sure you set content view after making full screen.
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.library);
 
 		initialiseVariables();
-		loadBrowser();
+		loadBrowser();*/
+	}
+
+	private void launchInChrome() {
+
+		String urlString ="http://lb-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do";
+		Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(urlString));
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.setPackage("com.android.chrome");
+		
+		try {
+		    startActivity(intent);
+		} catch (ActivityNotFoundException ex) {
+			
+		    // Chrome browser presumably not installed so allow user to choose instead
+		    intent.setPackage(null);
+		    startActivity(intent);
+		}
+		
 	}
 
 	private void initialiseVariables() {
@@ -56,6 +82,7 @@ public class Library extends Activity implements OnClickListener {
                 view.loadUrl(url);
                 return true;
             }
+            
         });
 		ourBrowser.setInitialScale(130);
 		ourBrowser.loadUrl("http://lb-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do");
@@ -88,5 +115,11 @@ public class Library extends Activity implements OnClickListener {
 			break;
 		}
 	}
-
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent i = new Intent("com.example.gmaps.MENU");
+		startActivity(i);
+	}
 }

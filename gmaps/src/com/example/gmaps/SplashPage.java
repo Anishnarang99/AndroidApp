@@ -1,5 +1,8 @@
 package com.example.gmaps;
 
+import com.example.gmaps.R;
+import com.example.gmaps.R.layout;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

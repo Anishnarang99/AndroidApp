@@ -3,7 +3,10 @@ package com.example.gmaps;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.gmaps.R;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,10 +19,9 @@ import android.widget.Toast;
 
 public class StaffSearch extends Activity {
 	
-	
-	
 	AutoCompleteTextView autoCompTextLecturer;
 	TextView LectName, LectDept, LectEmail, LectExt;
+	String lecturerName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class StaffSearch extends Activity {
 
 	private void setUpAutoCompleteTextViews() {
 
-		autoCompTextLecturer = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewLecturerName);
+		autoCompTextLecturer = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewStaffName);
 
 		// Build string array of buildings from mybuildings list
 		List<String> lecturerNames = new ArrayList<String>();
@@ -55,18 +57,16 @@ public class StaffSearch extends Activity {
 
 	private void setUpTextViews() {
 
-		LectName = (TextView) findViewById(R.id.textViewLecturerName);
-		LectDept = (TextView) findViewById(R.id.textViewLecturerDept);
-		LectEmail = (TextView) findViewById(R.id.textViewLecturerEmail);
-		LectExt = (TextView) findViewById(R.id.textViewLecturerExtension);
+		LectName = (TextView) findViewById(R.id.textViewStaffName);
+		LectDept = (TextView) findViewById(R.id.textViewStaffDept);
+		LectEmail = (TextView) findViewById(R.id.textViewStaffEmail);
+		LectExt = (TextView) findViewById(R.id.textViewStaffExtension);
 
 	}
 	
-	public void onClick_FindLecturer(View v) {
+	public void onClick_FindStaff(View v) {
 
 		// Displays the lecturer's information below.
-
-		String lecturerName;
 
 		lecturerName = autoCompTextLecturer.getText().toString();
 
@@ -79,7 +79,7 @@ public class StaffSearch extends Activity {
 			return;
 		}
 		
-		LectName.setText("Name: " + ln.lecturerName);
+		LectName.setText("Staff Name: " + ln.lecturerName);
 		LectDept.setText("Department: " + ln.dept);
 		LectEmail.setText("Email: " + ln.email);
 		LectExt.setText("Extension: " + ln.extension);
@@ -113,5 +113,12 @@ public class StaffSearch extends Activity {
 		}
 		
 		return null;
+	}
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent i = new Intent("com.example.gmaps.MENU");
+		startActivity(i);
 	}
 }

@@ -2,10 +2,10 @@ package com.example.gmaps;
 
 public class Lecturers {
 	
-	String lecturerName;
-	String dept;
-	String email;
-	String extension;
+	public String lecturerName;
+	public String dept;
+	public String email;
+	public String extension;
 	
 	public Lecturers(String ln, String dept, String em, String ext)
 	{

@@ -26,6 +26,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.gmaps.R;
+import com.example.gmaps.R.id;
+import com.example.gmaps.R.layout;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,14 +40,18 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class Gmaps extends Activity implements OnMapClickListener, OnMarkerClickListener {
+public class Gmaps extends Activity { //implements OnMapClickListener, OnMarkerClickListener {
 
 	private final LatLng LOCATION_UNI = new LatLng(52.765997, -1.234043); // University
 
 	private GoogleMap map;
+	CameraUpdate update;
+	Location myLocation;
+	
 	private Marker myMarker;
 	
-	String lat, lng, currentLat, currentLng;
+	int zoomLevel;
+	String lat, lng, currentLat, currentLng, showDirections;
 	
 
 	@Override
@@ -56,8 +63,6 @@ public class Gmaps extends Activity implements OnMapClickListener, OnMarkerClick
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_gmaps);
-		
-		String showDirections;
 
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		
@@ -65,12 +70,11 @@ public class Gmaps extends Activity implements OnMapClickListener, OnMarkerClick
 		map.getUiSettings().setZoomControlsEnabled(false);
 		map.setMyLocationEnabled(true);
 		
-		CameraUpdate update = CameraUpdateFactory.newLatLngZoom(LOCATION_UNI, (float) 17);
+		update = CameraUpdateFactory.newLatLngZoom(LOCATION_UNI, 17);
 		map.animateCamera(update);
 		
-		map.setOnMapClickListener(this);
-		// map.setOnMapLongClickListener(this); Enable this if you want to use onlongclick on map.
-		map.setOnMarkerClickListener(this);
+		//map.setOnMapClickListener(this);
+		//map.setOnMarkerClickListener(this);
         
 		// Retrieving current location co-ords and building co-ords to show route direction.
  		Intent i = getIntent();
@@ -84,33 +88,42 @@ public class Gmaps extends Activity implements OnMapClickListener, OnMarkerClick
 			
 			Log.d("Devon", "Showing route directions");
 			showDirections(lat, lng, currentLat, currentLng);
+			update = CameraUpdateFactory.newLatLngZoom(LOCATION_UNI, 14);
+			map.animateCamera(update);
 		}
 	}
 	
 
 	public void onClick_Uni(View v) {
 
-		CameraUpdate update = CameraUpdateFactory.newLatLngZoom(LOCATION_UNI, (float) 17);
+		CameraUpdate update = CameraUpdateFactory.newLatLngZoom(LOCATION_UNI, 17);
 		map.clear(); // Clears all overlays from the map.
 		map.animateCamera(update);	
 	}
 	
 
 	public void onClick_FindMe(View v) {
+		
+		zoomLevel = 16;
+		getMyLocation(zoomLevel);
+	}
+	
+	
+	private void getMyLocation(int zoomLevel) {
 
-		Location myLocation = map.getMyLocation();
+		myLocation = map.getMyLocation();
 		
 		if (myLocation == null ) {
 			
 			Toast.makeText(this, "Your location is not available", Toast.LENGTH_LONG).show();
 		} else {
 			
-			CameraUpdate update = CameraUpdateFactory.newLatLngZoom(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()), 16);
+			CameraUpdate update = CameraUpdateFactory.newLatLngZoom(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()), zoomLevel);
 			map.animateCamera(update);
 		}
 	}
-	
-	
+
+
 	public void onClick_BuildingSearch(View v) {
 
 		Toast.makeText(this, "Launching Building Search", Toast.LENGTH_SHORT).show();
@@ -119,29 +132,15 @@ public class Gmaps extends Activity implements OnMapClickListener, OnMarkerClick
 	}
 	
 	
-	@Override
+/*	@Override
 	public void onMapClick(LatLng point) {
 		
 		map.clear();
 		myMarker = map.addMarker(new MarkerOptions().position(point));
 		Log.d("Gmaps", "Short Map Click: Lat: " + point.latitude + " Lng: " + point.longitude);
-	}
+	}*/
 
-	
-	/*@Override
-	public void onMapLongClick(LatLng point) {
-		
-		// Re-factor this to check if a marker has already been created by this method. If it has, remove it.
-		map.clear();
-		map.addMarker(new MarkerOptions().position(point));
-		Log.d("Devon", "Lat: " + point.latitude + " Lng: " + point.longitude);
-		Toast.makeText(this, "Inflate menu to say 'get here' on a button?.", Toast.LENGTH_LONG).show();
-		// Show some buttons whether they want "Directions to here" or "Directions from here" in the onMarkerClick method.
-		// And then do more stuff from there.
-	} Be sure to implement OnMapLongClickListener onto the activity if you want to use onlongclick on map*/
-	
-	
-	@Override
+/*	@Override
 	public boolean onMarkerClick(Marker marker) {
 		
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -181,7 +180,7 @@ public class Gmaps extends Activity implements OnMapClickListener, OnMarkerClick
 			// show it
 			alertDialog.show();
 			return false;
-	}
+	}*/
 
 	public void showDirections(String lat, String lng, String currentLat, String currentLng) {
 			
@@ -357,4 +356,11 @@ public class Gmaps extends Activity implements OnMapClickListener, OnMarkerClick
              map.addPolyline(lineOptions);
          }
     }
+    
+    @Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent i = new Intent("com.example.gmaps.MENU");
+		startActivity(i);
+	}
 }

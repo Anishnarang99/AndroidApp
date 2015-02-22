@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.example.gmaps.R;
+import com.example.gmaps.R.id;
+import com.example.gmaps.R.layout;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
@@ -178,4 +182,14 @@ public class BuildingSearch extends Activity {
 		}
 		return null;
 	}
+
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent i = new Intent("com.example.gmaps.MENU");
+		startActivity(i);
+	}
+
+
 }

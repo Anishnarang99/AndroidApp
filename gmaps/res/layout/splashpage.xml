@@ -12,8 +12,8 @@
         android:layout_height="73dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/lboro_logo" />
+        android:layout_marginTop="40dp"
+        android:src="@drawable/lborologotrans" />
 
     <TextView
         android:id="@+id/textViewLboroUni"

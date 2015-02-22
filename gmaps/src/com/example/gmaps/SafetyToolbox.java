@@ -1,5 +1,9 @@
 package com.example.gmaps;
 
+import com.example.gmaps.R;
+import com.example.gmaps.R.id;
+import com.example.gmaps.R.layout;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -34,9 +38,6 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 		setContentView(R.layout.safetytoolbox);
 		
 		initialiseVariables();
-		
-		checkFlashAvailibility();
-		getCamera();
 	}
 
 	private void initialiseVariables() {
@@ -60,6 +61,8 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 			
 			if (!isFlashOn) {
 				
+				checkFlashAvailibility();
+				getCamera();
 				turnOnFlash();
 				break;
 			}
@@ -152,29 +155,30 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	        if (camera == null || params == null) {
 	            return;
 	        }
-	         
+	        
 	        params = camera.getParameters();
 	        params.setFlashMode(Parameters.FLASH_MODE_OFF);
 	        camera.setParameters(params);
-	        camera.startPreview();
+	        camera.stopPreview();
+	        camera.release();
+	        camera = null;
 	        isFlashOn = false;
+	        
 		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		turnOffFlash();
+		Intent i = new Intent("com.example.gmaps.MENU");
+		startActivity(i);
 	}
 	
 	@Override
 	protected void onPause() {
 	    super.onPause();
-	     
-	    // on pause turn off the flash
 	    turnOffFlash();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 }

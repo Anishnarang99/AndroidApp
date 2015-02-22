@@ -12,12 +12,19 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.example.gmaps.R;
+import com.example.gmaps.R.id;
+import com.example.gmaps.R.layout;
+import com.example.gmaps.R.menu;
+
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuInflater;
@@ -66,11 +73,26 @@ public class Menu extends Activity {
 	    		
 	    		try {
 	    			
+	    			if (appActivity == "Learn") {
+	    				Log.d("Devon", "Loading LEARN in Chrome");
+	    				String urlString ="http://learn.lboro.ac.uk/my";
+	    				loadinChrome(urlString);
+	    			}
+	    			
+	    			else if (appActivity == "Library") {
+	    				Log.d("Devon", "Loading Library in Chrome");
+	    				String urlString ="http://lb-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do";
+	    				loadinChrome(urlString);
+	    			}
+	    			
+	    			else {
+	    			
 		    		Class ourClass = Class.forName("com.example.gmaps." + appActivity);
 		    		Log.d("Devon", "Class is: com.example.gmaps." + appActivity);
 		    		
 		    		Intent ourIntent = new Intent(Menu.this, ourClass);
 		    		startActivity(ourIntent);
+	    			}
 	    		}
 	    		
 	    		catch (ClassNotFoundException e) {
@@ -111,6 +133,22 @@ public class Menu extends Activity {
 		}
 		
 		return false;
+	}
+	
+	private void loadinChrome(String urlString) {
+
+		Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(urlString));
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.setPackage("com.android.chrome");
+		
+		try {
+		    startActivity(intent);
+		} catch (ActivityNotFoundException ex) {
+			
+		    // Chrome browser presumably not installed so allow user to choose instead
+		    intent.setPackage(null);
+		    startActivity(intent);
+		}
 	}
 	
 	// Loads the data about all the buildings from an XML file.
@@ -285,5 +323,6 @@ public class Menu extends Activity {
 		
 		return mylocation;
 	}
+
 	
 }
