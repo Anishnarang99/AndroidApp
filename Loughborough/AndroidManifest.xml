@@ -41,7 +41,7 @@
 
         <!-- Splash background -->
         <activity
-            android:name="uk.ac.lboro.android.apps.Loughborough.SplashPage"
+            android:name="uk.ac.lboro.android.apps.Loughborough.Ui.SplashPage"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,11 +52,11 @@
 
         <!-- Menu Activity -->
         <activity
-            android:name="uk.ac.lboro.android.apps.Loughborough.Menu"
+            android:name="uk.ac.lboro.android.apps.Loughborough.Ui.Menu"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light" >
             <intent-filter>
-                <action android:name="uk.ac.lboro.android.apps.Loughborough.MENU" />
+                <action android:name="uk.ac.lboro.android.apps.Loughborough.Ui.MENU" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -64,10 +64,10 @@
 
         <!-- Navigation Activity -->
         <activity
-            android:name="uk.ac.lboro.android.apps.Loughborough.Navigation"
+            android:name="uk.ac.lboro.android.apps.Loughborough.Navigation.Navigation"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="uk.ac.lboro.android.apps.Loughborough.NAVIGATION" />
+                <action android:name="uk.ac.lboro.android.apps.Loughborough.Navigation.NAVIGATION" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -75,10 +75,10 @@
 
         <!-- Building Search Activity -->
         <activity
-            android:name="uk.ac.lboro.android.apps.Loughborough.BuildingSearch"
+            android:name="uk.ac.lboro.android.apps.Loughborough.Buildings.BuildingSearch"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="uk.ac.lboro.android.apps.Loughborough.BUILDINGSEARCH" />
+                <action android:name="uk.ac.lboro.android.apps.Loughborough.Buildings.BUILDINGSEARCH" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -86,10 +86,10 @@
 
         <!-- Normal Webview Activity -->
         <activity
-            android:name="uk.ac.lboro.android.apps.Loughborough.NormalWebview"
+            android:name="uk.ac.lboro.android.apps.Loughborough.Other.NormalWebview"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="uk.ac.lboro.android.apps.Loughborough.NORMALWEBVIEW" />
+                <action android:name="uk.ac.lboro.android.apps.Loughborough.Other.NORMALWEBVIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -97,10 +97,10 @@
 
         <!-- Staff Search Activity -->
         <activity
-            android:name="uk.ac.lboro.android.apps.Loughborough.StaffSearch"
+            android:name="uk.ac.lboro.android.apps.Loughborough.Staff.StaffSearch"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="uk.ac.lboro.android.apps.Loughborough.STAFFSEARCH" />
+                <action android:name="uk.ac.lboro.android.apps.Loughborough.Staff.STAFFSEARCH" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -108,10 +108,10 @@
 
         <!-- Safety Toolbox Activity -->
         <activity
-            android:name="uk.ac.lboro.android.apps.Loughborough.SafetyToolbox"
+            android:name="uk.ac.lboro.android.apps.Loughborough.Other.SafetyToolbox"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="uk.ac.lboro.android.apps.Loughborough.SAFETYTOOLBOX" />
+                <action android:name="uk.ac.lboro.android.apps.Loughborough.Other.SAFETYTOOLBOX" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
