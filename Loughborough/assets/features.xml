@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<functionality xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<feature>
+		<name>Learn</name>
+		<weblink>http://learn.lboro.ac.uk/my</weblink>
+	</feature>
+	<feature>
+		<name>Caspa</name>
+		<weblink>http://caspa.lboro.ac.uk/signon/</weblink>
+	</feature>
+	<feature>
+		<name>Timetable</name>
+		<weblink>https://lucas.lboro.ac.uk/its_apx/f?p=student_timetable</weblink>
+	</feature>
+	<feature>
+		<name>Main Website</name>
+		<weblink>http://www.lboro.ac.uk/</weblink>
+	</feature>
+	<feature>
+		<name>Lsu Website</name>
+		<weblink>http://www.lsu.co.uk/</weblink>
+	</feature>
+	<feature>
+		<name>Bus Travel Info</name>
+		<weblink>https://www.kinchbus.co.uk/services/sprint/timetable</weblink>
+	</feature>
+	<feature>
+		<name>Email</name>
+		<weblink>https://mail.google.com/a/student.lboro.ac.uk/?AuthEventSource=SSO</weblink>
+	</feature>
+	<feature>
+		<name>News</name>
+		<weblink>http://www.lboro.ac.uk/news-events/news/</weblink>
+	</feature>
+	<feature>
+		<name>Events</name>
+		<weblink>http://www.lboro.ac.uk/news-events/events/</weblink>
+	</feature>
+	<feature>
+		<name>Library</name>
+		<weblink>http://lb-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do</weblink>
+	</feature>
+	<feature>
+		<name>PC Lab Availability</name>
+		<weblink>http://www.lboro.ac.uk/services/it/labs/labs-availability/</weblink>
+	</feature>
+</functionality>
