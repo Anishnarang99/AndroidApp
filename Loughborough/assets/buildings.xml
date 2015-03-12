@@ -85,6 +85,12 @@
 		<roomcodes>HE</roomcodes>
 	</building>
 	<building>
+		<name>Cogz</name>
+		<latitude>52.765427</latitude>
+		<longitude>-1.233543</longitude>
+		<roomcodes></roomcodes>
+	</building>
+	<building>
 		<name>Cope Auditorium</name>
 		<latitude>52.7676474707</latitude>
 		<longitude>-1.221124251</longitude>
@@ -139,6 +145,12 @@
 		<roomcodes>SDR</roomcodes>
 	</building>
 	<building>
+		<name>Design School</name>
+		<latitude>52.7650544</latitude>
+		<longitude>-1.2229683</longitude>
+		<roomcodes>LDS</roomcodes>
+	</building>
+	<building>
 		<name>Edward Barnsley Building</name>
 		<latitude>52.7670646208</latitude>
 		<longitude>-1.2206039693</longitude>
@@ -191,6 +203,12 @@
 		<latitude>52.7675368625</latitude>
 		<longitude>-1.2185859362</longitude>
 		<roomcodes></roomcodes>
+	</building>
+	<building>
+		<name>Forest Court</name>
+		<latitude>52.767337</latitude>
+		<longitude>-1.209946</longitude>
+		<roomcodes>FC</roomcodes>
 	</building>
 	<building>
 		<name>Frank Gibb (Sir) Building</name>
@@ -445,10 +463,22 @@
 		<roomcodes>KK</roomcodes>
 	</building>
 	<building>
+		<name>National Cricket Performance Centre</name>
+		<latitude>52.766834</latitude>
+		<longitude>-1.230809</longitude>
+		<roomcodes>NCA</roomcodes>
+	</building>
+	<building>
 		<name>Netball / Badminton Centre</name>
 		<latitude>52.7659282599</latitude>
 		<longitude>-1.2215208506</longitude>
 		<roomcodes>NB</roomcodes>
+	</building>
+	<building>
+		<name>Parcelz</name>
+		<latitude>52.765094</latitude>
+		<longitude>-1.231824</longitude>
+		<roomcodes>RC</roomcodes>
 	</building>
 	<building>
 		<name>Paula Radcliffe Pavilion</name>
@@ -467,6 +497,12 @@
 		<latitude>52.7633053171</latitude>
 		<longitude>-1.237191405</longitude>
 		<roomcodes>X</roomcodes>
+	</building>
+	<building>
+		<name>Powerbase</name>
+		<latitude>52.767866</latitude>
+		<longitude>-1.225378</longitude>
+		<roomcodes>UU</roomcodes>
 	</building>
 	<building>
 		<name>Purple Onion</name>

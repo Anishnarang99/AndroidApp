@@ -1,12 +1,12 @@
 package uk.ac.lboro.android.apps.Loughborough.Other;
 
 import uk.ac.lboro.android.apps.Loughborough.R;
-import uk.ac.lboro.android.apps.Loughborough.R.id;
-import uk.ac.lboro.android.apps.Loughborough.R.layout;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.net.Uri;
@@ -17,11 +17,14 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SafetyToolbox extends Activity implements OnClickListener {
 	
 	Button Flashlight, CallSecurity, CallNHS;
+	TextView textView;
+	String textViewName;
 	Camera camera;
 	boolean hasFlash, isFlashOn;
 	Parameters params;
@@ -41,12 +44,19 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 
 	private void initialiseVariables() {
 		
+		textView = (TextView) findViewById(R.id.textViewTitle);
 		Flashlight = (Button) findViewById(R.id.buttonFlashlight);
 		CallSecurity = (Button) findViewById(R.id.buttonCallSecurity);
 		CallNHS = (Button) findViewById(R.id.buttonCallNHSDirect);
 		Flashlight.setOnClickListener(this);
 		CallSecurity.setOnClickListener(this);
 		CallNHS.setOnClickListener(this);
+		
+		textViewName = "Safety Toolbox";
+		textView.setText(textViewName);
+		textView.setTextSize(16);
+		textView.setTextColor(Color.WHITE);
+		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 	}
 
 	@Override
@@ -131,7 +141,7 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	        }
 	        
 	        catch (RuntimeException e) {
-	            Log.e("Gmaps", "Camera Error. Failed to Open. Error: " + e.getMessage());
+	            Log.e("Devon", "Camera Error. Failed to Open. Error: " + e.getMessage());
 	        }
 	    }
 	}
@@ -167,7 +177,6 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	        camera.release();
 	        camera = null;
 	        isFlashOn = false;
-	        
 		}
 	}
 	
@@ -184,5 +193,4 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	    super.onPause();
 	    turnOffFlash();
 	}	
-	
 }

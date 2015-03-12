@@ -6,12 +6,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import uk.ac.lboro.android.apps.Loughborough.R;
-import uk.ac.lboro.android.apps.Loughborough.R.id;
-import uk.ac.lboro.android.apps.Loughborough.R.layout;
 import uk.ac.lboro.android.apps.Loughborough.Ui.Menu;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.NetworkInfo.State;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,13 +25,17 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class BuildingSearch extends Activity {
-
+	
+	ConnectivityManager conMan;
+	TextView textView;
 	AutoCompleteTextView autoCompTextBuildings;
 	EditText editTextRoomCode;
-	String buildingName, roomCode, currentLat, currentLng;
+	String textViewName, buildingName, roomCode, currentLat, currentLng, showDirections;
+	State mobile, wifi;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +46,28 @@ public class BuildingSearch extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.building_search);
-
-		Log.d("Devon", "Log message in buildingsearch.java");
-				
-		setUpAutoCompleteTextViews();
-		editTextRoomCode = (EditText) findViewById(R.id.editTextRoomCode);
+		
+		initialiseVariables();
 	}
 
-	private void setUpAutoCompleteTextViews() {
-
+	private void initialiseVariables() {
+		
+		conMan = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		textView = (TextView) findViewById(R.id.textViewTitle);
 		autoCompTextBuildings = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewBuildingName);
+		editTextRoomCode = (EditText) findViewById(R.id.editTextRoomCode);
+		
+		// Check status of mobile and wifi
+		mobile = conMan.getNetworkInfo(0).getState();
+		// Log.d("Devon", "State mobile: " + mobile);
+		wifi = conMan.getNetworkInfo(1).getState();
+		// Log.d("Devon", "State wifi: " + wifi);
+		
+		textViewName = "Building Search";
+		textView.setText(textViewName);
+		textView.setTextSize(16);
+		textView.setTextColor(Color.WHITE);
+		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
 		// Build string array of buildings from mybuildings list
 		List<String> buildingNames = new ArrayList<String>();
@@ -72,8 +93,6 @@ public class BuildingSearch extends Activity {
 		
 		Buildings bn = getBuildingFromNameOrRoomCode(buildingName, roomCode);
 		
-		String showDirections = "Yes";
-
 		if (bn == null) {
 
 			Toast.makeText(this, "Cannot find location via building name or room code.", Toast.LENGTH_LONG).show();
@@ -89,8 +108,6 @@ public class BuildingSearch extends Activity {
 		currentLat = String.valueOf(mylocation.getLatitude());
 		currentLng = String.valueOf(mylocation.getLongitude());
 		
-		Log.d("Devon", "Current Lat: " + currentLat + " Current Lng: " + currentLng);
-		
 		if (currentLat == "0.0" && currentLng == "0.0") {
 			
 			Toast.makeText(this, "Cannot find current location.", Toast.LENGTH_LONG).show();
@@ -98,10 +115,24 @@ public class BuildingSearch extends Activity {
 			return;
 		}
 		
-		Log.d("Devon", "Building name retrieved from textview: " + buildingName);
-		Log.d("Devon", "Room code retrieved from textview: " + roomCode);
-		Log.d("Devon", "Current Lat: " + currentLat + " Current Lng: " + currentLng);
-		Log.d("Devon", "ShowDirections: " + showDirections);
+		if (mobile.toString() == "DISCONNECTED" && wifi.toString() == "DISCONNECTED")
+		{
+			Toast.makeText(this, "You do not have access to the internet. Please enable wifi or mobile data and try again.", Toast.LENGTH_LONG).show();
+			Log.d("Devon", "No access to the internet.");
+			showDirections = "No";
+			return;
+		}
+		
+		else {
+			showDirections = "Yes";
+			Log.d("Devon", "Can access to the internet.");
+		}
+		
+		
+		// Log.d("Devon", "Building name retrieved from textview: " + buildingName);
+		// Log.d("Devon", "Room code retrieved from textview: " + roomCode);
+		// Log.d("Devon", "Current Lat: " + currentLat + " Current Lng: " + currentLng);
+		// Log.d("Devon", "ShowDirections: " + showDirections);
 		
 		Intent i = new Intent("uk.ac.lboro.android.apps.Loughborough.Navigation.NAVIGATION");
 
@@ -144,7 +175,6 @@ public class BuildingSearch extends Activity {
 			if(bname.equalsIgnoreCase(name))
 				return bldg;
 		}
-		
 		return null;
 	}
 	
@@ -182,7 +212,6 @@ public class BuildingSearch extends Activity {
 		}
 		return null;
 	}
-
 	
 	@Override
 	public void onBackPressed() {
@@ -190,5 +219,4 @@ public class BuildingSearch extends Activity {
 		Intent i = new Intent("uk.ac.lboro.android.apps.Loughborough.Ui.MENU");
 		startActivity(i);
 	}
-
 }

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.lboro.android.apps.Loughborough.R;
-import uk.ac.lboro.android.apps.Loughborough.R.id;
-import uk.ac.lboro.android.apps.Loughborough.R.layout;
 import uk.ac.lboro.android.apps.Loughborough.Ui.Menu;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,97 +22,96 @@ import android.widget.Toast;
 
 public class StaffSearch extends Activity {
 	
-	AutoCompleteTextView autoCompTextLecturer;
-	TextView LectName, LectDept, LectEmail, LectExt;
-	String lecturerName;
+	AutoCompleteTextView autoCompTextStaff;
+	TextView textView, staffName, staffDept, staffEmail, staffExt;
+	String textViewName, sStaffName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 
-		// Makes it fullscreen - Make sure you set content view after making it
-		// full screen.
+		// Makes it fullscreen - Make sure you set content view after making it full screen.
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.staffsearch);
 
-		setUpAutoCompleteTextViews();
-		setUpTextViews();
+		initialiseVariables();
 	}
 
-	private void setUpAutoCompleteTextViews() {
-
-		autoCompTextLecturer = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewStaffName);
-
+	private void initialiseVariables() {
+		
+		textView = (TextView) findViewById(R.id.textViewTitle);
+		staffName = (TextView) findViewById(R.id.textViewStaffName);
+		staffDept = (TextView) findViewById(R.id.textViewStaffDept);
+		staffEmail = (TextView) findViewById(R.id.textViewStaffEmail);
+		staffExt = (TextView) findViewById(R.id.textViewStaffExtension);
+		autoCompTextStaff = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewStaffName);
+		
+		textViewName = "Staff Search";
+		textView.setText(textViewName);
+		textView.setTextSize(16);
+		textView.setTextColor(Color.WHITE);
+		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+		
 		// Build string array of buildings from mybuildings list
-		List<String> lecturerNames = new ArrayList<String>();
-		for (Lecturers lec : Menu.myLecturers) {
-			String lectname = lec.getLecturerName();
-			lecturerNames.add(lectname);
+		List<String> staffNames = new ArrayList<String>();
+		for (Staff stf : Menu.myStaff) {
+			String stname = stf.getStaffName();
+			staffNames.add(stname);
 		}
 
 		// Create the adapter and set it to the AutoCompleteTextView
-		ArrayAdapter<String> adapterLecturerName = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lecturerNames);
-		autoCompTextLecturer.setAdapter(adapterLecturerName);
-		autoCompTextLecturer.setThreshold(1);
-	}
-
-	private void setUpTextViews() {
-
-		LectName = (TextView) findViewById(R.id.textViewStaffName);
-		LectDept = (TextView) findViewById(R.id.textViewStaffDept);
-		LectEmail = (TextView) findViewById(R.id.textViewStaffEmail);
-		LectExt = (TextView) findViewById(R.id.textViewStaffExtension);
-
+		ArrayAdapter<String> adapterStaffName = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, staffNames);
+		autoCompTextStaff.setAdapter(adapterStaffName);
+		autoCompTextStaff.setThreshold(1);
 	}
 	
 	public void onClick_FindStaff(View v) {
 
-		// Displays the lecturer's information below.
+		// Displays the staff's information below.
+		sStaffName = autoCompTextStaff.getText().toString();
 
-		lecturerName = autoCompTextLecturer.getText().toString();
+		Staff stf = getStaffFromName(sStaffName);
 
-		Lecturers ln = getLecturerFromName(lecturerName);
+		if (stf == null) {
 
-		if (ln == null) {
-
-			Toast.makeText(this, "Cannot find the lecturer.", Toast.LENGTH_LONG).show();
-			Log.d("Devon", "Cannot find the lecturer in list.");
+			Toast.makeText(this, "Cannot find the staff member.", Toast.LENGTH_LONG).show();
+			Log.d("Devon", "Cannot find the staff member in list.");
 			return;
 		}
 		
-		LectName.setText("Staff Name: " + ln.lecturerName);
-		LectDept.setText("Department: " + ln.dept);
-		LectEmail.setText("Email: " + ln.email);
-		LectExt.setText("Extension: " + ln.extension);
+		staffName.setText("Name: " + stf.name);
+		staffDept.setText("Department: " + stf.dept);
+		staffEmail.setText("Email: " + stf.email);
+		staffExt.setText("Extension: " + stf.extension);
 	}
 	
-	private Lecturers getLecturerFromName(String lname) {
+	private Staff getStaffFromName(String sname) {
 		
-		Lecturers ln = null;
+		Staff stf = null;
 
-		if (!lname.isEmpty()) {
+		if (!sname.isEmpty()) {
 
-			ln = findLecturerFromName(lname);
-			return ln;
+			stf = findStaffFromName(sname);
+			return stf;
 		}
 		
 		return null;
 	}
 	
-	private Lecturers findLecturerFromName (String name)
+	private Staff findStaffFromName (String name)
 	{	
-		//Log.d("Devon", "Lecturer Name is: " + name);
+		//Log.d("Devon", "Staff Name is: " + name);
 		
-		for(Lecturers lect : Menu.myLecturers)
+		for(Staff staff : Menu.myStaff)
 		{
-			String lname = lect.getLecturerName();
+			String sname = staff.getStaffName();
 			
-			//Log.d("Devon", "lname in findLecturerFromName is: " + lname);
+			//Log.d("Devon", "sname in findStaffFromName is: " + sname);
 			
-			if(lname.equalsIgnoreCase(name))
-				return lect;
+			if(sname.equalsIgnoreCase(name))
+				return staff;
 		}
 		
 		return null;

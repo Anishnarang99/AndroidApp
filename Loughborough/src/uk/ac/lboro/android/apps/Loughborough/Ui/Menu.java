@@ -17,10 +17,7 @@ import org.w3c.dom.NodeList;
 import uk.ac.lboro.android.apps.Loughborough.R;
 import uk.ac.lboro.android.apps.Loughborough.Buildings.Buildings;
 import uk.ac.lboro.android.apps.Loughborough.Other.Features;
-import uk.ac.lboro.android.apps.Loughborough.R.id;
-import uk.ac.lboro.android.apps.Loughborough.R.layout;
-import uk.ac.lboro.android.apps.Loughborough.R.menu;
-import uk.ac.lboro.android.apps.Loughborough.Staff.Lecturers;
+import uk.ac.lboro.android.apps.Loughborough.Staff.Staff;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -52,7 +49,7 @@ public class Menu extends Activity {
 						"WebView News", "WebView Events", "Library", "Staff.StaffSearch", "WebView PC Lab Availability", "Other.SafetyToolbox"};
 	
 	public static List<Buildings> myBuildings = new ArrayList<Buildings>();
-	public static List<Lecturers> myLecturers = new ArrayList<Lecturers>();
+	public static List<Staff> myStaff = new ArrayList<Staff>();
 	public static List<Features> myFeatures = new ArrayList<Features>();
 	
 	Map<String, String> myDictionary = new HashMap<String, String>();
@@ -61,6 +58,7 @@ public class Menu extends Activity {
 	static Location mylocation;
 	LocationManager lm;
 	LocationListener myListener;
+	GridView gridview;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,12 +79,12 @@ public class Menu extends Activity {
 	    if (myBuildings.isEmpty())
 	    	BuildingsXML(); // Reading XML file containing Loughborough building names.
 	    
-	    if (myLecturers.isEmpty())
+	    if (myStaff.isEmpty())
 	    	StaffSearchXML(); // Reading XML file containing Loughborough EESE staff names.
 	    
 	    extractFeaturesInfo();
 		
-	    GridView gridview = (GridView) findViewById(R.id.gridview);
+	    gridview = (GridView) findViewById(R.id.gridview);
 	    gridview.setAdapter(new ImageAdapter(this));	
 		
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
@@ -206,11 +204,11 @@ public class Menu extends Activity {
 		try {
 
 			// Take xml file via input stream from the assets folder.
-			InputStream in_s = getApplicationContext().getAssets().open("features.xml");
+			InputStream inputStream = getApplicationContext().getAssets().open("features.xml");
 
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(in_s);
+			Document doc = dBuilder.parse(inputStream);
 
 			doc.getDocumentElement().normalize();
 
@@ -245,7 +243,7 @@ public class Menu extends Activity {
 		}
 
 		catch (Exception e) {
-			Log.d("Devon", "In the log");
+			Log.d("Devon", "Parsing Features XML file failed. Check the log.");
 			e.printStackTrace();
 		}
 	}
@@ -256,16 +254,11 @@ public class Menu extends Activity {
 		try {
 			
 			// Take xml file via input stream from the assets folder.
-			InputStream in_s = getApplicationContext().getAssets().open("buildings.xml");
+			InputStream inputStream = getApplicationContext().getAssets().open("buildings.xml");
 			
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(in_s);
-
-
-			// optional, but recommended
-			// read this -
-			// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+			Document doc = dBuilder.parse(inputStream);
 
 			doc.getDocumentElement().normalize();
 			  
@@ -302,7 +295,7 @@ public class Menu extends Activity {
 		}
 		
 		catch (Exception e) {
-				Log.d("Devon", "In the log");
+				Log.d("Devon", "Parsing Building XML file failed. Check the log.");
 				e.printStackTrace();
 			    }
 	}	
@@ -313,16 +306,12 @@ public class Menu extends Activity {
 		try {
 
 			// Take xml file via input stream from the assets folder.
-			InputStream in_s = getApplicationContext().getAssets().open("staff.xml");
+			InputStream inputStream = getApplicationContext().getAssets().open("staff.xml");
 			
 
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(in_s);
-
-			// optional, but recommended
-			// read this -
-			// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+			Document doc = dBuilder.parse(inputStream);
 
 			doc.getDocumentElement().normalize();
 
@@ -354,16 +343,16 @@ public class Menu extends Activity {
 					//Log.d("Devon", "Extension: " + Extension);
 					
 					// Creates an object
-					Lecturers lecturers = new Lecturers(PersonName, Dept, Email, Extension);
-					myLecturers.add(lecturers);
+					Staff staff = new Staff(PersonName, Dept, Email, Extension);
+					myStaff.add(staff);
 					
-					//Log.d("Devon", "Added lecturer: " + lecturers.getLecturerName());
+					//Log.d("Devon", "Added staff: " + staff.getStaffName());
 				}
 			}
 		}
 
 		catch (Exception e) {
-			Log.d("Devon", "In the log");
+			Log.d("Devon", "Parsing Staff XML file failed. Check the log.");
 			e.printStackTrace();
 		}
 	}
@@ -380,7 +369,6 @@ public class Menu extends Activity {
 				mylocation = location;
 				Log.d("Devon", "Location Listener retrieved: " + location);
 				
-				// Write something here to stop listening for the current location.
 				lm.removeUpdates(myListener);
 				Log.d ("Devon", "Location listener has been de-activated.");
 				
@@ -399,25 +387,22 @@ public class Menu extends Activity {
 			}
 		};
 		
-		// Update this to use the best provider to find location.
+		// Finds location using Wifi or GPS
 		if (lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER) == true) {
 			
 			lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, myListener);
-			Log.d ("Devon", "Location listener has been activated via Network.");
-			Log.d ("Devon", "Location (via Network) is: " + mylocation);
+			Log.d ("Devon", "Location listener has been activated via Network (Wifi).");
 		}
 		else if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER) == true) {
 			
 			lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, myListener);
 			Log.d ("Devon", "Location listener has been activated via GPS.");
-			Log.d ("Devon", "Location (via GPS) is: " + mylocation);
 		}
 		else {
 			
-			Log.d ("Devon", "Cannot find location. Please enable Wifi or GPS.");
+			Log.d ("Devon", "Cannot find location. Please enable Wifi or GPS and try again.");
 			Toast.makeText(this, "Cannot find location. Please enable Wifi or GPS and then try again.", Toast.LENGTH_LONG).show();
 		}
-        
 	}
 	
 	public static Location getLocation() {
@@ -432,8 +417,8 @@ public class Menu extends Activity {
 		// set title
 		alertDialogBuilder.setTitle("About Us");
 		
-		String message = "This is a Loughborough app to help students with their day to day life at Loughborough University." +
-				" This app was created as a final year project by Devon Kerai." +
+		String message = "This is an app to help students with their day to day life at Loughborough University." +
+				" This was created as a final year project by Devon Kerai." +
 				" If you have any queries, please email me at: d.kerai-11@student.lboro.ac.uk";
 		
 		// set dialog message
@@ -441,15 +426,13 @@ public class Menu extends Activity {
 			
 		.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				// if this button is clicked, just close the dialog box and do nothing
+				// Close the dialog box
 				dialog.cancel();
 				}
 			});
  
-			// create alert dialog
 			AlertDialog alertDialog = alertDialogBuilder.create();
  
-			// show it
 			alertDialog.show();
 	}
 }

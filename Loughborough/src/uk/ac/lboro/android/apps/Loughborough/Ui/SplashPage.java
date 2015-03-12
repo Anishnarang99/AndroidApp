@@ -1,7 +1,6 @@
 package uk.ac.lboro.android.apps.Loughborough.Ui;
 
 import uk.ac.lboro.android.apps.Loughborough.R;
-import uk.ac.lboro.android.apps.Loughborough.R.layout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ public class SplashPage extends Activity {
 			@Override
 			public void run(){
 				try{
-					sleep(2000);
+					sleep(2000); // Stays on the splash page for 2 seconds.
 				}
 				catch (InterruptedException e){
 					e.printStackTrace();

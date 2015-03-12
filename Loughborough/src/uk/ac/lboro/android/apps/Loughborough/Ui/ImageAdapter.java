@@ -1,10 +1,6 @@
 package uk.ac.lboro.android.apps.Loughborough.Ui;
 
 import uk.ac.lboro.android.apps.Loughborough.R;
-import uk.ac.lboro.android.apps.Loughborough.R.drawable;
-import uk.ac.lboro.android.apps.Loughborough.R.id;
-import uk.ac.lboro.android.apps.Loughborough.R.layout;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,7 +66,7 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.caspa, R.drawable.timetable, R.drawable.mainwebsite,
             R.drawable.lsu, R.drawable.bustravel,R.drawable.email,
             R.drawable.news, R.drawable.events, R.drawable.library,
-            R.drawable.staffsearch2, R.drawable.pclab, R.drawable.safetytoolbox};
+            R.drawable.staffsearch, R.drawable.pclab, R.drawable.safetytoolbox};
     
     private String[] mNames = {
     		"Maps", "Building Search", "Learn", "Caspa", "Timetable",

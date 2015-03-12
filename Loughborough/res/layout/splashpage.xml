@@ -3,29 +3,26 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lboro_fountain"
     android:orientation="vertical" >
 
-    <ImageView
+<ImageView
         android:id="@+id/imageViewLboroLogo"
-        android:layout_width="244dp"
-        android:layout_height="73dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/lborologotrans" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash" />
 
-    <TextView
+<!--     <TextView
         android:id="@+id/textViewLboroUni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageViewLboroLogo"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/imageViewLboroLogo"
-        android:layout_marginBottom="24dp"
-        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
         android:text="Loughborough University"
         android:textColor="#551a8b"
-        android:textSize="21sp" />
+        android:textSize="25sp" /> -->
 
 </RelativeLayout>

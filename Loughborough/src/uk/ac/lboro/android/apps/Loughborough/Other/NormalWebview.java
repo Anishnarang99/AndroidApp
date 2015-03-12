@@ -1,12 +1,11 @@
 package uk.ac.lboro.android.apps.Loughborough.Other;
 
 import uk.ac.lboro.android.apps.Loughborough.R;
-import uk.ac.lboro.android.apps.Loughborough.R.id;
-import uk.ac.lboro.android.apps.Loughborough.R.layout;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +50,7 @@ public class NormalWebview extends Activity implements OnClickListener {
 		webLink = i.getStringExtra("WebLink");
 		
 		Log.d("Devon", "Webview textviewname: " + textViewName);
-		Log.d("Devon", "Webview weblink: " + webLink);
+		// Log.d("Devon", "Webview weblink: " + webLink);
 		
 		initialiseVariables();
 		loadBrowser();
@@ -59,7 +58,7 @@ public class NormalWebview extends Activity implements OnClickListener {
 
 	private void initialiseVariables() {
 		
-		textView = (TextView) findViewById(R.id.textViewWebviewTitle);
+		textView = (TextView) findViewById(R.id.textViewTitle);
 		back = (Button) findViewById(R.id.buttonBack);
 		forward = (Button) findViewById(R.id.buttonForward);
 		refresh = (Button) findViewById(R.id.buttonRefresh);
@@ -68,7 +67,10 @@ public class NormalWebview extends Activity implements OnClickListener {
 		refresh.setOnClickListener(this);
 		
 		textView.setText(textViewName);
-
+		textView.setTextSize(16);
+		textView.setTextColor(Color.WHITE);
+		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+		
 		progressBar = new ProgressDialog(this);
 		progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 		progressBar.setMessage("Please wait...");
@@ -85,6 +87,8 @@ public class NormalWebview extends Activity implements OnClickListener {
 		ourBrowser.getSettings().setUseWideViewPort(true);
 		ourBrowser.getSettings().setBuiltInZoomControls(true);
 		ourBrowser.getSettings().setDisplayZoomControls(false);
+		if (textViewName.contains("Bus Travel Info"))
+			ourBrowser.getSettings().setUserAgentString("Mozilla/5.0");
 		mWebChromeClient = new MyWebChromeClient();
 		ourBrowser.setWebChromeClient(mWebChromeClient);
 		ourBrowser.setWebViewClient(new WebViewClient() {
