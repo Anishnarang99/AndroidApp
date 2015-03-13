@@ -111,9 +111,9 @@ public class NormalWebview extends Activity implements OnClickListener {
         for(int i = 0; i < pids.size(); i++)
                {
                    ActivityManager.RunningAppProcessInfo info = pids.get(i);
-                   Log.d("Devon", "Process ID INFOOOOOOOOOOO:" + info.processName + " " + info.pid);
+                   //Log.d("Devon", "Process ID INFOOOOOOOOOOO:" + info.processName + " " + info.pid);
                    if(info.processName.equalsIgnoreCase("android.process.media")){
-                      Log.d("Devon", "Killing process: " + info.pid);
+                      Log.d("Devon", "Killing media player process via pid: " + info.pid);
                       android.os.Process.killProcess(info.pid);
                    } 
                }
