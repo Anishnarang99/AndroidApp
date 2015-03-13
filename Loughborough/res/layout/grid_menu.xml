@@ -8,13 +8,22 @@
 
     <GridView
         android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:columnWidth="90dp"
+        android:fitsSystemWindows="true"
         android:gravity="center"
         android:horizontalSpacing="10dp"
-        android:numColumns="auto_fit"
+        android:numColumns="3"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp" />
+        android:verticalSpacing="10dp" >
+    </GridView>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="bottom|right"
+        android:onClick="onClick_AboutUs"
+        android:src="@drawable/questionmark" />
+</FrameLayout>

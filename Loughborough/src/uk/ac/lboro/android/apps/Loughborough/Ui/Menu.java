@@ -14,6 +14,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+
 import uk.ac.lboro.android.apps.Loughborough.R;
 import uk.ac.lboro.android.apps.Loughborough.Buildings.Buildings;
 import uk.ac.lboro.android.apps.Loughborough.Other.Features;
@@ -408,6 +410,11 @@ public class Menu extends Activity {
 	public static Location getLocation() {
 		
 		return mylocation;
+	}
+	
+	public void onClick_AboutUs(View v) {
+
+		aboutUsInfo();
 	}
 	
 	private void aboutUsInfo() {

@@ -35,7 +35,7 @@ public class BuildingSearch extends Activity {
 	AutoCompleteTextView autoCompTextBuildings;
 	EditText editTextRoomCode;
 	String textViewName, buildingName, roomCode, currentLat, currentLng, showDirections;
-	State mobile, wifi;
+	NetworkInfo netInfo;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +57,9 @@ public class BuildingSearch extends Activity {
 		autoCompTextBuildings = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewBuildingName);
 		editTextRoomCode = (EditText) findViewById(R.id.editTextRoomCode);
 		
-		// Check status of mobile and wifi
-		mobile = conMan.getNetworkInfo(0).getState();
-		// Log.d("Devon", "State mobile: " + mobile);
-		wifi = conMan.getNetworkInfo(1).getState();
-		// Log.d("Devon", "State wifi: " + wifi);
+		// Check status of network
+		netInfo = conMan.getActiveNetworkInfo();
+		Log.d("Devon", "netInfo: " + netInfo);
 		
 		textViewName = "Building Search";
 		textView.setText(textViewName);
@@ -115,7 +113,7 @@ public class BuildingSearch extends Activity {
 			return;
 		}
 		
-		if (mobile.toString() == "DISCONNECTED" && wifi.toString() == "DISCONNECTED")
+		if (netInfo == null)
 		{
 			Toast.makeText(this, "You do not have access to the internet. Please enable wifi or mobile data and try again.", Toast.LENGTH_LONG).show();
 			Log.d("Devon", "No access to the internet.");

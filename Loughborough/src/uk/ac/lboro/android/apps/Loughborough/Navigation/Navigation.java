@@ -1,5 +1,6 @@
 package uk.ac.lboro.android.apps.Loughborough.Navigation;
 
+import uk.ac.lboro.android.apps.Loughborough.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.location.Location;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo.State;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +17,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import uk.ac.lboro.android.apps.Loughborough.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,7 +37,7 @@ public class Navigation extends Activity {
 	String textViewName, lat, lng, currentLat, currentLng, showDirections;
 	
 	ConnectivityManager conMan;
-	State mobile, wifi;
+	NetworkInfo netInfo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +65,9 @@ public class Navigation extends Activity {
 		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 		
 		
-		// Check status of mobile and wifi
-		mobile = conMan.getNetworkInfo(0).getState();
-		// Log.d("Devon", "State mobile: " + mobile);
-		wifi = conMan.getNetworkInfo(1).getState();
-		// Log.d("Devon", "State wifi: " + wifi);
+		// Check status of network
+		netInfo = conMan.getActiveNetworkInfo();
+		Log.d("Devon", "netInfo: " + netInfo);
 	}
 
 	private void initialiseMap() {
@@ -81,7 +79,7 @@ public class Navigation extends Activity {
 		update = CameraUpdateFactory.newLatLngZoom(LOCATION_UNI, 17);
 		map.animateCamera(update);
 		
-		if (mobile.toString() == "DISCONNECTED" && wifi.toString() == "DISCONNECTED")
+		if (netInfo == null)
 		{
 			Toast.makeText(this, "You do not have access to the internet. Please enable wifi or mobile data and try again.", Toast.LENGTH_LONG).show();
 			Log.d("Devon", "No access to the internet.");

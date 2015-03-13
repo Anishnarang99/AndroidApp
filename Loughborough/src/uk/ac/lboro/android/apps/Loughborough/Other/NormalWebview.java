@@ -1,8 +1,12 @@
 package uk.ac.lboro.android.apps.Loughborough.Other;
 
+import java.util.List;
+
 import uk.ac.lboro.android.apps.Loughborough.R;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,7 +14,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
@@ -27,6 +30,7 @@ public class NormalWebview extends Activity implements OnClickListener {
 	Button back, forward, refresh;
 	ProgressDialog progressBar;
 	String textViewName, webLink;
+	ActivityManager actMan;
 	
 	private FrameLayout customViewContainer;
     private WebChromeClient.CustomViewCallback customViewCallback;
@@ -101,6 +105,18 @@ public class NormalWebview extends Activity implements OnClickListener {
         });
 		ourBrowser.setInitialScale(100);
 		ourBrowser.loadUrl(webLink);
+		
+		actMan = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> pids = actMan.getRunningAppProcesses();
+        for(int i = 0; i < pids.size(); i++)
+               {
+                   ActivityManager.RunningAppProcessInfo info = pids.get(i);
+                   Log.d("Devon", "Process ID INFOOOOOOOOOOO:" + info.processName + " " + info.pid);
+                   if(info.processName.equalsIgnoreCase("android.process.media")){
+                      Log.d("Devon", "Killing process: " + info.pid);
+                      android.os.Process.killProcess(info.pid);
+                   } 
+               }
 	}
 	
 	class MyWebChromeClient extends WebChromeClient {
@@ -113,40 +129,40 @@ public class NormalWebview extends Activity implements OnClickListener {
                 callback.onCustomViewHidden();
                 return;
             }
-            customView = view;
+
             ourBrowser.setVisibility(View.GONE);
             customViewContainer = new FrameLayout(NormalWebview.this);
-            customViewContainer.setVisibility(View.VISIBLE);
             customViewContainer.setBackgroundResource(android.R.color.black);
             customViewContainer.addView(view);
+            customView = view;
             customViewCallback = callback;
+            customViewContainer.setVisibility(View.VISIBLE);
             setContentView(customViewContainer);
         }
 
 		@Override
         public void onHideCustomView() {
-            super.onHideCustomView();
+            //super.onHideCustomView();
             
-            if (customView == null)
+            if (customView == null) {
                 return;
-            
-            ourBrowser.setVisibility(View.VISIBLE);
-            customViewContainer.setVisibility(View.GONE);
+            } else {
 
-            // Hide the custom view.
-            customView.setVisibility(View.GONE);
+	
+	            // Hide the custom view.
+	            customView.setVisibility(View.GONE);
+	
+	            // Remove the custom view from its container.
+	            customViewContainer.removeView(customView);
+	            customView = null;
+	            customViewContainer.setVisibility(View.GONE);
+	            customViewCallback.onCustomViewHidden();
 
-            // Remove the custom view from its container.
-            customViewContainer.removeView(customView);
-            customViewCallback.onCustomViewHidden();
-            customView = null;
-            
-            // Close all parent views
-            ViewGroup parent = (ViewGroup) ourBrowser.getParent();
-            parent.removeView(ourBrowser);
-
-            setContentView(R.layout.webview);
-            loadBrowser();
+	            ourBrowser.setVisibility(View.VISIBLE);
+	            setContentView(R.layout.webview);
+	            finish();
+	            startActivity(getIntent());
+            }
 		}
 		
 		@Override
@@ -184,8 +200,14 @@ public class NormalWebview extends Activity implements OnClickListener {
 	
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
-		Intent i = new Intent("uk.ac.lboro.android.apps.Loughborough.Ui.MENU");
-		startActivity(i);
+		if (customViewContainer != null)
+	        mWebChromeClient.onHideCustomView();
+	    else if (ourBrowser.canGoBack())
+	        ourBrowser.goBack();
+	    else {
+	    	super.onBackPressed();
+			Intent i = new Intent("uk.ac.lboro.android.apps.Loughborough.Ui.MENU");
+			startActivity(i);
+	    }
 	}
 }

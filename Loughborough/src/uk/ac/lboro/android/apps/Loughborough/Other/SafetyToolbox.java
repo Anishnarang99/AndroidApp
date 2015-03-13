@@ -156,7 +156,14 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	         
 	        params = camera.getParameters();
 	        params.setFlashMode(Parameters.FLASH_MODE_TORCH);
+	        try {
 	        camera.setParameters(params);
+	        }
+	        
+	        catch (RuntimeException e) {
+	            Log.e("Devon", "Camera Error. Failed to Open. Error: " + e.getMessage());
+	            
+	        }
 	        camera.startPreview();
 	        isFlashOn = true;
 		}
