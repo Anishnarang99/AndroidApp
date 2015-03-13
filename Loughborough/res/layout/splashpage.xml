@@ -5,24 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-<ImageView
+    <ImageView
         android:id="@+id/imageViewLboroLogo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/splash" />
-
-<!--     <TextView
-        android:id="@+id/textViewLboroUni"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:text="Loughborough University"
-        android:textColor="#551a8b"
-        android:textSize="25sp" /> -->
+        android:src="@drawable/splashwhite" />
 
 </RelativeLayout>
