@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/purptopinkgradient"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     android:paddingTop="5sp" >
 
@@ -25,7 +25,7 @@
             android:layout_weight="1"
             android:onClick="onClick_FindMe"
             android:text="Find Me"
-            android:textColor="#FFFFFF" />
+            android:textColor="#2B165E" />
 
         <Button
             android:id="@+id/buttonUni"
@@ -35,7 +35,7 @@
             android:layout_weight="1"
             android:onClick="onClick_Uni"
             android:text="Uni"
-            android:textColor="#FFFFFF" />
+            android:textColor="#2B165E" />
 
         <Button
             android:id="@+id/buttonBuildingSearch"
@@ -45,7 +45,7 @@
             android:layout_weight="1"
             android:onClick="onClick_BuildingSearch"
             android:text="Building Search"
-            android:textColor="#FFFFFF" />
+            android:textColor="#2B165E" />
     </LinearLayout>
 
     <fragment

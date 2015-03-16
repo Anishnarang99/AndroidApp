@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/purptopinkgradient"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     android:paddingTop="5sp" >
 
@@ -24,7 +24,7 @@
             android:layout_height="33dp"
             android:layout_weight="1"
             android:text="Back"
-            android:textColor="#FFFFFF" />
+            android:textColor="#2B165E" />
 
         <Button
             android:id="@+id/buttonForward"
@@ -33,7 +33,7 @@
             android:layout_height="33dp"
             android:layout_weight="1"
             android:text="Forward"
-            android:textColor="#FFFFFF" />
+            android:textColor="#2B165E" />
 
         <Button
             android:id="@+id/buttonRefresh"
@@ -42,7 +42,7 @@
             android:layout_height="33dp"
             android:layout_weight="1"
             android:text="Refresh"
-            android:textColor="#FFFFFF" />
+            android:textColor="#2B165E" />
     </LinearLayout>
 
     <WebView

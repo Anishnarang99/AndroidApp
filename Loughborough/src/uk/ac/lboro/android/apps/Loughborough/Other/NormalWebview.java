@@ -72,7 +72,7 @@ public class NormalWebview extends Activity implements OnClickListener {
 		
 		textView.setText(textViewName);
 		textView.setTextSize(16);
-		textView.setTextColor(Color.WHITE);
+		textView.setTextColor(Color.parseColor("#C70066"));
 		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 		
 		progressBar = new ProgressDialog(this);

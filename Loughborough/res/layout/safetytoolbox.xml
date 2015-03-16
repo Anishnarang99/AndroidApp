@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/purptopinkgradient"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     android:paddingTop="5sp" >
 
@@ -17,20 +17,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Flashlight"
-        android:textColor="#FFFFFF" />
+        android:textColor="#2B165E" />
 
     <Button
         android:id="@+id/buttonCallSecurity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Call Security"
-        android:textColor="#FFFFFF" />
+        android:textColor="#2B165E" />
 
     <Button
         android:id="@+id/buttonCallNHSDirect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Call NHS Direct"
-        android:textColor="#FFFFFF" />
+        android:textColor="#2B165E" />
 
 </LinearLayout>

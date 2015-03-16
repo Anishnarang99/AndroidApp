@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/purptopinkgradient"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     android:paddingLeft="5sp"
     android:paddingRight="5sp"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Search by Staff Name:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#FFFFFF"
+        android:textColor="#2B165E"
         android:textStyle="bold" />
 
     <AutoCompleteTextView
@@ -34,7 +34,7 @@
         android:ems="10"
         android:hint="Staff Name"
         android:inputType="textImeMultiLine|textCapWords"
-        android:textColor="#FFFFFF" />
+        android:textColor="#2B165E" />
 
     <Button
         android:id="@+id/buttonFindStaff"
@@ -43,7 +43,7 @@
         android:layout_height="33dp"
         android:onClick="onClick_FindStaff"
         android:text="Find Staff"
-        android:textColor="#FFFFFF" />
+        android:textColor="#2B165E" />
 
     <Space
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:text="Staff Details"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#FFFFFF"
+        android:textColor="#2B165E"
         android:textStyle="bold" />
 
     <TextView
@@ -63,27 +63,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name:"
-        android:textColor="#FFFFFF" />
+        android:textColor="#2B165E" />
 
     <TextView
         android:id="@+id/textViewStaffDept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Department:"
-        android:textColor="#FFFFFF" />
+        android:textColor="#2B165E" />
 
     <TextView
         android:id="@+id/textViewStaffEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email:"
-        android:textColor="#FFFFFF" />
+        android:textColor="#2B165E" />
 
     <TextView
         android:id="@+id/textViewStaffExtension"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Extension:"
-        android:textColor="#FFFFFF" />
+        android:textColor="#2B165E" />
 
 </LinearLayout>

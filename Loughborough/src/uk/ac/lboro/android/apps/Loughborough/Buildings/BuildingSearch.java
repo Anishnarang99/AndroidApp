@@ -64,7 +64,7 @@ public class BuildingSearch extends Activity {
 		textViewName = "Building Search";
 		textView.setText(textViewName);
 		textView.setTextSize(16);
-		textView.setTextColor(Color.WHITE);
+		textView.setTextColor(Color.parseColor("#C70066"));
 		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
 		// Build string array of buildings from mybuildings list
@@ -99,7 +99,7 @@ public class BuildingSearch extends Activity {
 		}
 		
 		if (mylocation == null) {
-			Toast.makeText(this, "Cannot retrieve current location, please wait and then try again.", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Cannot retrieve current location, please enable location and re-start the app.", Toast.LENGTH_LONG).show();
 			return;
 		}
 		

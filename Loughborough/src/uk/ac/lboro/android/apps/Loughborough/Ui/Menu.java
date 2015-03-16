@@ -402,8 +402,8 @@ public class Menu extends Activity {
 		}
 		else {
 			
-			Log.d ("Devon", "Cannot find location. Please enable Wifi or GPS and try again.");
-			Toast.makeText(this, "Cannot find location. Please enable Wifi or GPS and then try again.", Toast.LENGTH_LONG).show();
+			Log.d ("Devon", "Cannot retrieve current location, please enable location and re-start the app.");
+			Toast.makeText(this, "Cannot retrieve current location, please enable location and re-start the app.", Toast.LENGTH_LONG).show();
 		}
 	}
 	

@@ -61,7 +61,7 @@ public class Navigation extends Activity {
 		textViewName = "Navigation";
 		textView.setText(textViewName);
 		textView.setTextSize(16);
-		textView.setTextColor(Color.WHITE);
+		textView.setTextColor(Color.parseColor("#C70066"));
 		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 		
 		

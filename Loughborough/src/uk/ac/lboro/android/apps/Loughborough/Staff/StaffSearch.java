@@ -51,7 +51,7 @@ public class StaffSearch extends Activity {
 		textViewName = "Staff Search";
 		textView.setText(textViewName);
 		textView.setTextSize(16);
-		textView.setTextColor(Color.WHITE);
+		textView.setTextColor(Color.parseColor("#C70066"));
 		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 		
 		// Build string array of buildings from mybuildings list
