@@ -191,8 +191,6 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	public void onBackPressed() {
 		super.onBackPressed();
 		turnOffFlash();
-		Intent i = new Intent("uk.ac.lboro.android.apps.Loughborough.Ui.MENU");
-		startActivity(i);
 	}
 	
 	@Override

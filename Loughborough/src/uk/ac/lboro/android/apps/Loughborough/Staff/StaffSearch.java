@@ -120,7 +120,5 @@ public class StaffSearch extends Activity {
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-		Intent i = new Intent("uk.ac.lboro.android.apps.Loughborough.Ui.MENU");
-		startActivity(i);
 	}
 }

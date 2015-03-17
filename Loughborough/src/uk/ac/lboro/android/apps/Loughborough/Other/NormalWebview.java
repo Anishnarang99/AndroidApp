@@ -206,8 +206,6 @@ public class NormalWebview extends Activity implements OnClickListener {
 	        ourBrowser.goBack();
 	    else {
 	    	super.onBackPressed();
-			Intent i = new Intent("uk.ac.lboro.android.apps.Loughborough.Ui.MENU");
-			startActivity(i);
 	    }
 	}
 }
