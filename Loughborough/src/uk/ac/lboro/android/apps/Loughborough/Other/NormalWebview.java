@@ -2,6 +2,8 @@ package uk.ac.lboro.android.apps.Loughborough.Other;
 
 import java.util.List;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+
 import uk.ac.lboro.android.apps.Loughborough.R;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -23,13 +25,13 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-public class NormalWebview extends Activity implements OnClickListener {
+public class NormalWebview extends Activity {
 
 	WebView ourBrowser;
-	TextView textView;
+	TextView textView, textViewBrowserButtons;
 	Button back, forward, refresh;
 	ProgressDialog progressBar;
-	String textViewName, webLink;
+	String textViewName, StringBrowserButtons, webLink;
 	ActivityManager actMan;
 	
 	private FrameLayout customViewContainer;
@@ -63,17 +65,21 @@ public class NormalWebview extends Activity implements OnClickListener {
 	private void initialiseVariables() {
 		
 		textView = (TextView) findViewById(R.id.textViewTitle);
+		textViewBrowserButtons = (TextView) findViewById(R.id.textViewBrowserButtons);
 		back = (Button) findViewById(R.id.buttonBack);
 		forward = (Button) findViewById(R.id.buttonForward);
 		refresh = (Button) findViewById(R.id.buttonRefresh);
-		back.setOnClickListener(this);
-		forward.setOnClickListener(this);
-		refresh.setOnClickListener(this);
 		
 		textView.setText(textViewName);
 		textView.setTextSize(16);
 		textView.setTextColor(Color.parseColor("#C70066"));
 		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+		
+		
+		StringBrowserButtons = "Browser Controls:";
+		textViewBrowserButtons.setText(StringBrowserButtons);
+		textViewBrowserButtons.setTextSize(12);
+		textViewBrowserButtons.setTextColor(Color.parseColor("#C70066"));
 		
 		progressBar = new ProgressDialog(this);
 		progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -175,27 +181,22 @@ public class NormalWebview extends Activity implements OnClickListener {
 	      }
 	}
 
-	@Override
-	public void onClick(View v) {
+	
+	public void onClick_Refresh(View v) {
 
-		int id = v.getId();
-		
-		if (id == R.id.buttonBack) {
-			
-			if (ourBrowser.canGoBack())
-				ourBrowser.goBack();
-		}
-		
-		else if (id == R.id.buttonForward) {
-			
-			if (ourBrowser.canGoForward())
-				ourBrowser.goForward();
-		}
-		
-		else if (id == R.id.buttonRefresh) {
-			
-			ourBrowser.reload();
-		}
+		ourBrowser.reload();	
+	}
+	
+	public void onClick_Back(View v) {
+
+		if (ourBrowser.canGoBack())
+			ourBrowser.goBack();	
+	}
+	
+	public void onClick_Forward(View v) {
+
+		if (ourBrowser.canGoForward())
+			ourBrowser.goForward();	
 	}
 	
 	@Override
