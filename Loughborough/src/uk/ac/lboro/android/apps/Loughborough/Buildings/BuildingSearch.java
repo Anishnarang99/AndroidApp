@@ -99,7 +99,7 @@ public class BuildingSearch extends Activity {
 		}
 		
 		if (mylocation == null) {
-			Toast.makeText(this, "Cannot retrieve current location, please enable location and re-start the app.", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Cannot retrieve current location, please enable location and restart the app.", Toast.LENGTH_LONG).show();
 			return;
 		}
 		
