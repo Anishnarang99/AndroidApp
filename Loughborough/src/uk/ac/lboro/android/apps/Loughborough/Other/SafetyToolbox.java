@@ -1,5 +1,7 @@
 package uk.ac.lboro.android.apps.Loughborough.Other;
 
+import java.io.IOException;
+
 import uk.ac.lboro.android.apps.Loughborough.R;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -7,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.net.Uri;
@@ -28,6 +31,7 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	Camera camera;
 	boolean hasFlash, isFlashOn;
 	Parameters params;
+	SurfaceTexture surfaceTexture; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -157,10 +161,12 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	        params = camera.getParameters();
 	        params.setFlashMode(Parameters.FLASH_MODE_TORCH);
 	        try {
-	        camera.setParameters(params);
+	        	camera.setParameters(params);
+	        	surfaceTexture = new SurfaceTexture(0); // To get the flashlight to work on Android 5.0+
+	        	camera.setPreviewTexture(surfaceTexture);
 	        }
 	        
-	        catch (RuntimeException e) {
+	        catch (RuntimeException | IOException e) {
 	            Log.e("Devon", "Camera Error. Failed to Open. Error: " + e.getMessage());
 	            
 	        }
