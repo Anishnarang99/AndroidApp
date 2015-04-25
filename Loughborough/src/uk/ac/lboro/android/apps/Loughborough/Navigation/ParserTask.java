@@ -13,7 +13,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+// The following code is based on code found here:
+// http://wptrafficanalyzer.in/blog/drawing-driving-route-directions-between-two-locations-using-google-directions-in-google-map-android-api-v2/
 /** A class to parse the Google Places in JSON format */
+
 class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String,String>>> >{
 	
 	GoogleMap gMap;
@@ -22,20 +25,21 @@ class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String,Str
     	gMap = map;
 	}
 
-	// Parsing the data in non-ui thread
+	// Parsing the data in non-UI thread
     @Override
     protected List<List<HashMap<String, String>>> doInBackground(String... jsonData) {
 
     JSONObject jObject;
     List<List<HashMap<String, String>>> routes = null;
 
-        try{
+        try {
+        	
             jObject = new JSONObject(jsonData[0]);
             DirectionsJSONParser parser = new DirectionsJSONParser();
 
             // Starts parsing data
             routes = parser.parse(jObject);
-        }catch(Exception e){
+        } catch(Exception e) {
             e.printStackTrace();
         }
         return routes;
@@ -73,7 +77,7 @@ class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String,Str
             lineOptions.color(Color.RED);
         }
 
-         // Drawing polyline route on the map.
+        // Drawing polyline route on the map.
         gMap.addPolyline(lineOptions);
      }
 }

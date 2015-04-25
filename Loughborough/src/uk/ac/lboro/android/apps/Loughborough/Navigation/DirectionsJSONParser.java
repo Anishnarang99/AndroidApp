@@ -9,7 +9,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
  
 import com.google.android.gms.maps.model.LatLng;
- 
+
+// The following code is based on code found here:
+// http://wptrafficanalyzer.in/blog/drawing-driving-route-directions-between-two-locations-using-google-directions-in-google-map-android-api-v2/
 public class DirectionsJSONParser {
  
     /** Receives a JSONObject and returns a list of lists containing latitude and longitude */
@@ -57,10 +59,8 @@ public class DirectionsJSONParser {
         return routes;
     }
  
-    /**
-    * Method to decode polyline points
-    * Courtesy : jeffreysambells.com/2010/05/27/decoding-polylines-from-google-maps-direction-api-with-java
-    * */
+    // Decode Polyline points
+    // The following code is based on code found here: jeffreysambells.com/2010/05/27/decoding-polylines-from-google-maps-direction-api-with-java
     private List<LatLng> decodePoly(String encoded) {
  
         List<LatLng> poly = new ArrayList<LatLng>();
