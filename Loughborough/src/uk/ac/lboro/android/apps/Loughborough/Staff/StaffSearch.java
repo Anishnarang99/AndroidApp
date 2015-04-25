@@ -7,7 +7,6 @@ import uk.ac.lboro.android.apps.Loughborough.R;
 import uk.ac.lboro.android.apps.Loughborough.Ui.Menu;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -38,7 +37,8 @@ public class StaffSearch extends Activity {
 
 		initialiseVariables();
 	}
-
+	
+	// Initialising variables
 	private void initialiseVariables() {
 		
 		textView = (TextView) findViewById(R.id.textViewTitle);
@@ -48,6 +48,7 @@ public class StaffSearch extends Activity {
 		staffExt = (TextView) findViewById(R.id.textViewStaffExtension);
 		autoCompTextStaff = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewStaffName);
 		
+		// Set up the heading of the activity
 		textViewName = "Staff Search";
 		textView.setText(textViewName);
 		textView.setTextSize(16);
@@ -67,6 +68,7 @@ public class StaffSearch extends Activity {
 		autoCompTextStaff.setThreshold(1);
 	}
 	
+	// Pressing the 'Find Staff' button.
 	public void onClick_FindStaff(View v) {
 
 		// Displays the staff's information below.
@@ -81,6 +83,7 @@ public class StaffSearch extends Activity {
 			return;
 		}
 		
+		// Updates the text views on the screen.
 		staffName.setText("Name: " + stf.name);
 		staffDept.setText("Department: " + stf.dept);
 		staffEmail.setText("Email: " + stf.email);
@@ -100,6 +103,7 @@ public class StaffSearch extends Activity {
 		return null;
 	}
 	
+	// Determines whether the staff name entered exist, if it is, return the Staff object.
 	private Staff findStaffFromName (String name)
 	{	
 		//Log.d("Devon", "Staff Name is: " + name);
@@ -117,6 +121,7 @@ public class StaffSearch extends Activity {
 		return null;
 	}
 	
+	// Goes back to the menu screen when the back button is pressed.
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();

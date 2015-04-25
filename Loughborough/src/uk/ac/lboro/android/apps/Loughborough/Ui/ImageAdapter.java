@@ -9,6 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+// Displays the menu screen in a grid layout using custom icons.
+// The following code is based on code from here: http://www.tutorialspoint.com/android/android_grid_view.htm
 public class ImageAdapter extends BaseAdapter {
 	
 	View gridView;
@@ -23,7 +26,7 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
 	public int getCount() {
-        return mThumbIds.length;
+        return mIcons.length;
     }
 
     @Override
@@ -36,13 +39,13 @@ public class ImageAdapter extends BaseAdapter {
         return 0;
     }
 
-    // create a new ImageView for each item referenced by the Adapter
+    // Create a new ImageView for each item referenced by the adapter
     @Override
 	public View getView(int position, View convertView, ViewGroup parent) {
     	
     	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        if (convertView == null) {  // if it's not recycled, initialise some attributes
+        if (convertView == null) {  // Initialise some attributes if the view has not already been created.
         	
         	gridView = new View(mContext);
         	gridView = inflater.inflate(R.layout.grid_single, null);
@@ -54,14 +57,15 @@ public class ImageAdapter extends BaseAdapter {
         	
         	gridView = convertView;
         }
-
-        imageView.setImageResource(mThumbIds[position]);
+        
+        // Places the images and text on the screen in one grid.
+        imageView.setImageResource(mIcons[position]);
         textView.setText(mNames[position]);
         return gridView;
     }
 
-    // references to our images
-    private Integer[] mThumbIds = {
+    // References to the icon images and names.
+    private Integer[] mIcons = {
             R.drawable.map, R.drawable.buildingsearch, R.drawable.learn,
             R.drawable.caspa, R.drawable.timetable, R.drawable.mainwebsite,
             R.drawable.lsu, R.drawable.bustravel,R.drawable.email,

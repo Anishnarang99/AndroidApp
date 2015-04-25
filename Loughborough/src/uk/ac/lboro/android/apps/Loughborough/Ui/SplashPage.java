@@ -18,6 +18,7 @@ public class SplashPage extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splashpage);
 		
+		// In a new thread, pause on the splash page for two seconds then open the menu screen.
 		Thread timer = new Thread(){
 			@Override
 			public void run(){
@@ -28,6 +29,7 @@ public class SplashPage extends Activity {
 					e.printStackTrace();
 				}
 				finally{
+					// Load the menu activity.
 					Intent openMainActivity = new Intent("uk.ac.lboro.android.apps.Loughborough.Ui.MENU"); // The name needs to match the action name in the Android Manifest xml
 					startActivity(openMainActivity);
 				}
@@ -37,9 +39,9 @@ public class SplashPage extends Activity {
 		timer.start();
 	}
 	
+	// Exits the app when the back button is pressed.
 	@Override
 	protected void onPause() {
-		
 		super.onPause();
 		finish();
 	}

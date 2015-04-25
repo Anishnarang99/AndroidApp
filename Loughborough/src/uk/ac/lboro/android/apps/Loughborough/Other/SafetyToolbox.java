@@ -43,6 +43,7 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.safetytoolbox);
 		
+		// Initialise variables
 		initialiseVariables();
 	}
 
@@ -56,6 +57,7 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 		CallSecurity.setOnClickListener(this);
 		CallNHS.setOnClickListener(this);
 		
+		// Sets up the heading in the activity
 		textViewName = "Safety Toolbox";
 		textView.setText(textViewName);
 		textView.setTextSize(16);
@@ -71,7 +73,10 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 		
 		int id = v.getId();
 
+		// If the Flashlight button is pressed
+		// The following code is based on code found here: http://www.mkyong.com/android/how-to-turn-onoff-camera-ledflashlight-in-android/
 		if (id == R.id.buttonFlashlight) {
+			
 			
 			if (!isFlashOn) {
 				
@@ -85,7 +90,8 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 				turnOffFlash();
 			}
 		}
-
+		
+		// If the Call Security button is pressed
 		if (id == R.id.buttonCallSecurity) {
 			
 			// SecurityNumber = "456852"; // Fake security number as a place holder.
@@ -93,17 +99,18 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 			
 			try {
 				
-			    Intent my_callIntent = new Intent(Intent.ACTION_CALL);
+			    Intent callIntent = new Intent(Intent.ACTION_CALL);
 			    
 			    // Need "tel:" there to make a call
-			    my_callIntent.setData(Uri.parse("tel:"+ SecurityNumber));
-			    startActivity(my_callIntent);
+			    callIntent.setData(Uri.parse("tel:"+ SecurityNumber));
+			    startActivity(callIntent);
 			} catch (ActivityNotFoundException e) {
 				
 			    Toast.makeText(getApplicationContext(), "Error in your phone call" + e.getMessage(), Toast.LENGTH_LONG).show();
 			}
 		}
 		
+		// If the Call NHS Direct button is pressed
 		if (id == R.id.buttonCallNHSDirect) {
 
 			// NHSDirectNumber = "0123456"; // Fake NHS Direct number as a place holder.
@@ -111,11 +118,11 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 			
 			try {
 				
-			    Intent my_callIntent = new Intent(Intent.ACTION_CALL);
+			    Intent callIntent = new Intent(Intent.ACTION_CALL);
 			    
 			    // Need "tel:" there to make a call
-			    my_callIntent.setData(Uri.parse("tel:"+ NHSDirectNumber));
-			    startActivity(my_callIntent);
+			    callIntent.setData(Uri.parse("tel:"+ NHSDirectNumber));
+			    startActivity(callIntent);
 			} catch (ActivityNotFoundException e) {
 				
 			    Toast.makeText(getApplicationContext(), "Error in your phone call" + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -125,14 +132,11 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 
 	private void checkFlashAvailibility() {
 		
-		// Check Device supports Flash
+		// Checks device supports flash
 		hasFlash = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 		
-		if (!hasFlash) {
-		    // device doesn't support flash
-		    // Show alert message and close the application
+		if (!hasFlash)
 			Toast.makeText(this, "Your device does not contain flash!", Toast.LENGTH_LONG).show();
-		}
 	}
 
 	private void getCamera() {
@@ -160,6 +164,7 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	         
 	        params = camera.getParameters();
 	        params.setFlashMode(Parameters.FLASH_MODE_TORCH);
+	        
 	        try {
 	        	camera.setParameters(params);
 	        	surfaceTexture = new SurfaceTexture(0); // To get the flashlight to work on Android 5.0+
@@ -193,12 +198,14 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 		}
 	}
 	
+	// Goes back to the menu screen when the back button is pressed.
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
 		turnOffFlash();
 	}
 	
+	// Turns off the flashlight if the application is exited.
 	@Override
 	protected void onPause() {
 	    super.onPause();

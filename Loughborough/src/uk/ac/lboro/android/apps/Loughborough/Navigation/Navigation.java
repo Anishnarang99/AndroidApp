@@ -172,7 +172,7 @@ public class Navigation extends Activity {
         String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
  
         // Sensor enabled
-        String walkingmode = "&mode=walking&units=metric";
+        String walkingmode = "mode=walking&units=metric";
  
         // Building the parameters to the web service
         String parameters = str_origin + "&" + str_dest + "&" + walkingmode;

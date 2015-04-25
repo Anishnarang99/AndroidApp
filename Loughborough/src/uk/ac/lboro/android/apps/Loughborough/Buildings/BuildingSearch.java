@@ -15,8 +15,6 @@ import android.graphics.Paint;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.NetworkInfo.State;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,6 +45,7 @@ public class BuildingSearch extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.building_search);
 		
+		// Initialising variables
 		initialiseVariables();
 	}
 
@@ -61,6 +60,7 @@ public class BuildingSearch extends Activity {
 		netInfo = conMan.getActiveNetworkInfo();
 		Log.d("Devon", "netInfo: " + netInfo);
 		
+		// Setting up the heading of the activity
 		textViewName = "Building Search";
 		textView.setText(textViewName);
 		textView.setTextSize(16);
@@ -80,15 +80,15 @@ public class BuildingSearch extends Activity {
 		autoCompTextBuildings.setAdapter(adapterBuildingName);
 		autoCompTextBuildings.setThreshold(1);
 	}
-
+	
+	// Launches the 'Navigation' activity and displays the directions.
 	public void onClick_GetDirections(View v) {
-
-		// Launches the 'Other' activity and displays the directions.
 
 		buildingName = autoCompTextBuildings.getText().toString();
 		roomCode = editTextRoomCode.getText().toString().toUpperCase();
 		Location mylocation = Menu.getLocation();
 		
+		// Creates a Buildings object from the entered name or room code.
 		Buildings bn = getBuildingFromNameOrRoomCode(buildingName, roomCode);
 		
 		if (bn == null) {
@@ -103,6 +103,7 @@ public class BuildingSearch extends Activity {
 			return;
 		}
 		
+		// Co-ordinates of the device.
 		currentLat = String.valueOf(mylocation.getLatitude());
 		currentLng = String.valueOf(mylocation.getLongitude());
 		
@@ -133,7 +134,8 @@ public class BuildingSearch extends Activity {
 		// Log.d("Devon", "ShowDirections: " + showDirections);
 		
 		Intent i = new Intent("uk.ac.lboro.android.apps.Loughborough.Navigation.NAVIGATION");
-
+		
+		// Passes location variables and a flag into the Navigation activity to display the route on the map. 
 		i.putExtra("LAT", bn.getLatitude()); // Building name will be blank (not null) if field is not in.
 		i.putExtra("LNG", bn.getLongitude()); // Room code will be blank (not null) if field is not filled in.
 		i.putExtra("CURRENTLAT", currentLat);
@@ -211,6 +213,7 @@ public class BuildingSearch extends Activity {
 		return null;
 	}
 	
+	// Goes back to the menu screen when the back button is pressed.
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();

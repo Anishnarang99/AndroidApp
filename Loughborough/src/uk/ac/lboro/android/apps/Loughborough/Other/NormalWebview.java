@@ -2,8 +2,6 @@ package uk.ac.lboro.android.apps.Loughborough.Other;
 
 import java.util.List;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-
 import uk.ac.lboro.android.apps.Loughborough.R;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -15,7 +13,6 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
@@ -48,17 +45,23 @@ public class NormalWebview extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
+		// Shows a progress bar on the screen.
 		this.getWindow().requestFeature(Window.FEATURE_PROGRESS);
+		
 		setContentView(R.layout.webview);
-
+		
+		// Retrieves the passed variables when this intent is called.
 		Intent i = getIntent();
 		textViewName = i.getStringExtra("FeatName");
 		webLink = i.getStringExtra("WebLink");
 		
-		Log.d("Devon", "Webview textviewname: " + textViewName);
+		// Log.d("Devon", "Webview textviewname: " + textViewName);
 		// Log.d("Devon", "Webview weblink: " + webLink);
 		
+		// Initialises variables
 		initialiseVariables();
+		
+		// Loads the browser in the webview.
 		loadBrowser();
 	}
 
@@ -70,17 +73,19 @@ public class NormalWebview extends Activity {
 		forward = (Button) findViewById(R.id.buttonForward);
 		refresh = (Button) findViewById(R.id.buttonRefresh);
 		
+		// Sets up the heading of the activity
 		textView.setText(textViewName);
 		textView.setTextSize(16);
 		textView.setTextColor(Color.parseColor("#C70066"));
 		textView.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 		
-		
+		// Sets up the "Browser Controls" text.
 		StringBrowserButtons = "Browser Controls:";
 		textViewBrowserButtons.setText(StringBrowserButtons);
 		textViewBrowserButtons.setTextSize(12);
 		textViewBrowserButtons.setTextColor(Color.parseColor("#C70066"));
 		
+		// Sets up the progress bar
 		progressBar = new ProgressDialog(this);
 		progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 		progressBar.setMessage("Please wait...");
@@ -90,18 +95,22 @@ public class NormalWebview extends Activity {
 	}
 
 	private void loadBrowser() {
-
+		
+		// Setting up the browser.
 		ourBrowser = (WebView) findViewById(R.id.WebViewBrowser);
 		ourBrowser.getSettings().setJavaScriptEnabled(true);
 		ourBrowser.getSettings().setLoadWithOverviewMode(true);
 		ourBrowser.getSettings().setUseWideViewPort(true);
 		ourBrowser.getSettings().setBuiltInZoomControls(true);
 		ourBrowser.getSettings().setDisplayZoomControls(false);
+		// Change the useragent to Mozilla if viewing the bus travel information so the correct page loads.
 		if (textViewName.contains("Bus Travel Info"))
 			ourBrowser.getSettings().setUserAgentString("Mozilla/5.0");
 		mWebChromeClient = new MyWebChromeClient();
 		ourBrowser.setWebChromeClient(mWebChromeClient);
 		ourBrowser.setWebViewClient(new WebViewClient() {
+			
+			// Loads a new URL within the same webview.
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url)
             {
@@ -112,12 +121,13 @@ public class NormalWebview extends Activity {
 		ourBrowser.setInitialScale(100);
 		ourBrowser.loadUrl(webLink);
 		
+		// Kills the media process activity after playing a youtube video because it doesn't turn off automatically.
 		actMan = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> pids = actMan.getRunningAppProcesses();
         for(int i = 0; i < pids.size(); i++)
                {
                    ActivityManager.RunningAppProcessInfo info = pids.get(i);
-                   //Log.d("Devon", "Process ID INFOOOOOOOOOOO:" + info.processName + " " + info.pid);
+                   //Log.d("Devon", "Process ID info:" + info.processName + " " + info.pid);
                    if(info.processName.equalsIgnoreCase("android.process.media")){
                       Log.d("Devon", "Killing media player process via pid: " + info.pid);
                       android.os.Process.killProcess(info.pid);
@@ -125,12 +135,14 @@ public class NormalWebview extends Activity {
                }
 	}
 	
+	// When you click the fullscreen icon on a youtube video, it shows in a full screen.
+	// The following code is based on code found here: http://stackoverflow.com/questions/14763483/android-webview-with-an-embedded-youtube-video-full-screen-button-freezes-video
 	class MyWebChromeClient extends WebChromeClient {
 		
 		@Override
         public void onShowCustomView(View view,CustomViewCallback callback) {
 
-            // if a view already exists then immediately terminate the new one
+            // If a view already exists then immediately terminate the new one
             if (customView != null) {
                 callback.onCustomViewHidden();
                 return;
@@ -171,6 +183,7 @@ public class NormalWebview extends Activity {
             }
 		}
 		
+		// Updates the progress bar
 		@Override
 		public void onProgressChanged(WebView view, int progress){
 	    	
@@ -181,30 +194,31 @@ public class NormalWebview extends Activity {
 	      }
 	}
 
-	
+	// Pressing the 'Refresh' button.
 	public void onClick_Refresh(View v) {
 
 		ourBrowser.reload();	
 	}
 	
+	// Pressing the 'Back' button.
 	public void onClick_Back(View v) {
 
 		if (ourBrowser.canGoBack())
 			ourBrowser.goBack();	
 	}
 	
+	// Pressing the 'Forward' button.
 	public void onClick_Forward(View v) {
 
 		if (ourBrowser.canGoForward())
 			ourBrowser.goForward();	
 	}
 	
+	// Goes back to the menu screen when the back button is pressed.
 	@Override
 	public void onBackPressed() {
 		if (customViewContainer != null)
 	        mWebChromeClient.onHideCustomView();
-	    else if (ourBrowser.canGoBack())
-	        ourBrowser.goBack();
 	    else {
 	    	super.onBackPressed();
 	    }

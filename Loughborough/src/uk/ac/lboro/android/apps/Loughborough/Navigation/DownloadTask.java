@@ -25,7 +25,6 @@ class DownloadTask extends AsyncTask<String, Void, String> {
 	protected String doInBackground(String... url) {
 
 		// For storing data from web service
-
 		String data = "";
 
 		try {

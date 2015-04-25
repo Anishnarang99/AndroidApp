@@ -14,8 +14,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-
 import uk.ac.lboro.android.apps.Loughborough.R;
 import uk.ac.lboro.android.apps.Loughborough.Buildings.Buildings;
 import uk.ac.lboro.android.apps.Loughborough.Other.Features;
@@ -44,23 +42,25 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.Toast;
 
-
 public class Menu extends Activity {
 	
 	String classes[] = {"Navigation.Navigation", "Buildings.BuildingSearch", "Learn", "WebView Caspa", "WebView Timetable",
 						"WebView Main Website", "WebView Lsu Website", "WebView Bus Travel Info", "WebView Email",
 						"WebView News", "WebView Events", "Library", "Staff.StaffSearch", "WebView PC Lab Availability", "Other.SafetyToolbox"};
 	
+	// Arrays to store the data parsed from the XML files.
 	public static List<Buildings> myBuildings = new ArrayList<Buildings>();
 	public static List<Staff> myStaff = new ArrayList<Staff>();
 	public static List<Features> myFeatures = new ArrayList<Features>();
 	
+	// Creates a dictionary of feature name to website link from the 'myFeatures' array.
 	Map<String, String> myDictionary = new HashMap<String, String>();
 	
 	// Variables to get current location
 	static Location mylocation;
 	LocationManager lm;
 	LocationListener myListener;
+	
 	GridView gridview;
 	
 	@Override
@@ -73,9 +73,10 @@ public class Menu extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.grid_menu);
 		
-	    getCurrentLocation(); // Gets current location of phone to determine route directions. 
+		// Gets current location of phone to determine route directions.
+	    getCurrentLocation(); 
 	    
-	    // Only parses the XML files if the Lists are not already populated.
+	    // Only parses the XML files if the arrays are not already populated.
 	    if (myFeatures.isEmpty())
 	    	FeaturesXML(); // Reading XML file containing Loughborough features (Learn, Caspa, Timetable, etc).
 	    
@@ -87,9 +88,11 @@ public class Menu extends Activity {
 	    
 	    extractFeaturesInfo();
 		
+	    // Sets up the menu layout.
 	    gridview = (GridView) findViewById(R.id.gridview);
 	    gridview.setAdapter(new ImageAdapter(this));	
 		
+	    // Loads the activity depending on what icon was pressed.
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
 	    	
 	        @Override
@@ -99,18 +102,25 @@ public class Menu extends Activity {
 	    		
 	    		try {
 	    			
-	    			if (appActivity == "Learn") {
+	    			// If Learn is clicked, load in Google Chrome browser.
+	    			if (appActivity.equalsIgnoreCase("Learn")) {
 	    				Log.d("Devon", "Loading LEARN in Chrome.");
-	    				String urlString ="http://learn.lboro.ac.uk/my";
-	    				loadinChrome(urlString);
+	    				
+	    				String weblink = myDictionary.get(appActivity);
+	    				Log.d("Devon", "Activity weblink: " + weblink);
+	    				loadinChrome(weblink);
 	    			}
 	    			
-	    			else if (appActivity == "Library") {
+	    			// If Library is clicked, load in Google Chrome browser.
+	    			else if (appActivity.equalsIgnoreCase("Library")) {
 	    				Log.d("Devon", "Loading Library in Chrome.");
-	    				String urlString ="http://lb-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/search.do";
-	    				loadinChrome(urlString);
+	    				
+	    				String weblink = myDictionary.get(appActivity);
+	    				Log.d("Devon", "Activity weblink: " + weblink);
+	    				loadinChrome(weblink);
 	    			}
 	    			
+	    			// If any other webview activity is clicked, load in a webview within the app.
 	    			else if (appActivity.startsWith("WebView")) {
 	    				Log.d("Devon", "Loading activity in a normal webview.");
 	    				
@@ -125,10 +135,11 @@ public class Menu extends Activity {
 	    				loadNormalWebview(appActivity, featname, weblink);
 	    			}
 	    			
+	    			// For all activities that aren't webviews.
 	    			else {
 	    			
 			    		Class ourClass = Class.forName("uk.ac.lboro.android.apps.Loughborough." + appActivity);
-			    		Log.d("Devon", "Class is: uk.ac.lboro.android.apps.Loughborough." + appActivity);
+			    		Log.d("Devon", "Class being loaded is: uk.ac.lboro.android.apps.Loughborough." + appActivity);
 			    		
 			    		Intent ourIntent = new Intent(Menu.this, ourClass);
 			    		startActivity(ourIntent);
@@ -143,12 +154,13 @@ public class Menu extends Activity {
 	    });
 	}
 
+	// If you press the menu button on older smartphone devices, an additional button appears.
 	@Override
 	public boolean onCreateOptionsMenu(android.view.Menu menu) {
 		
 		super.onCreateOptionsMenu(menu);
-		MenuInflater blowUp = getMenuInflater();
-		blowUp.inflate(R.menu.additional_info, menu);
+		MenuInflater menuInflate = getMenuInflater();
+		menuInflate.inflate(R.menu.additional_info, menu);
 		return true;
 	}
 
@@ -177,22 +189,25 @@ public class Menu extends Activity {
 		// Log.d("Devon", "Feature myDictionary: " + myDictionary);
 	}
 	
+	// Loads a website externally in the Google Chrome browser.
 	private void loadinChrome(String urlString) {
 
-		Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(urlString));
-		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.setPackage("com.android.chrome");
+		Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse(urlString));
+		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		i.setPackage("com.android.chrome");
 		
 		try {
-		    startActivity(intent);
-		} catch (ActivityNotFoundException ex) {
 			
-		    // Chrome browser presumably not installed so allow user to choose instead
-		    intent.setPackage(null);
-		    startActivity(intent);
+		    startActivity(i);
+		} catch (ActivityNotFoundException e) {
+			
+		    // Chrome browser probably not installed so allow the user to choose another instead.
+		    i.setPackage(null);
+		    startActivity(i);
 		}
 	}
 	
+	// Loads the webviews in an activity within the app.
 	private void loadNormalWebview(String appActivity, String featname, String weblink) {
 		
 		Intent i = new Intent("uk.ac.lboro.android.apps.Loughborough.Other.NORMALWEBVIEW");
@@ -201,7 +216,8 @@ public class Menu extends Activity {
 		startActivity(i);
 	}
 	
-	// Loads the features (Learn, Caspa) via an XML file.
+	// Loads the features (Learn, Caspa, etc) via an XML file.
+	// The following code is based on code found here: http://www.mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/
 	private void FeaturesXML() {
 		
 		try {
@@ -209,31 +225,31 @@ public class Menu extends Activity {
 			// Take xml file via input stream from the assets folder.
 			InputStream inputStream = getApplicationContext().getAssets().open("features.xml");
 
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputStream);
+			DocumentBuilderFactory docBuildFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuildFactory.newDocumentBuilder();
+			Document document = docBuilder.parse(inputStream);
 
-			doc.getDocumentElement().normalize();
+			document.getDocumentElement().normalize();
+			  
+			// Log.d("Devon", "Root element: " + document.getDocumentElement().getNodeName());
+			  
+			NodeList nodeList = document.getElementsByTagName("feature");
 
-			//Log.d("Devon", "Root element: " + doc.getDocumentElement().getNodeName());
-
-			NodeList nList = doc.getElementsByTagName("feature");
-
-			for (int i = 0; i < nList.getLength(); i++) {
-
-				Node nNode = nList.item(i);
-
-				//Log.d("Devon", "Current Element: " + nNode.getNodeName());
-
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-					Element eElement = (Element) nNode;
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				  
+				Node node = nodeList.item(i);
+			  
+				// Log.d("Devon", "Current Element: " + nNode.getNodeName());
+			  
+				if (node.getNodeType() == Node.ELEMENT_NODE) {
+			  
+					Element element = (Element) node;
 
 					// Log.d("Devon","Id : " + eElement.getAttribute("id"));
-					String FeatureName = eElement.getElementsByTagName("name").item(0).getTextContent();
+					String FeatureName = element.getElementsByTagName("name").item(0).getTextContent();
 					// Log.d("Devon", "Feature Name: " + FeatureName);
 					
-					String WebLink = eElement.getElementsByTagName("weblink").item(0).getTextContent();
+					String WebLink = element.getElementsByTagName("weblink").item(0).getTextContent();
 					// Log.d("Devon", "Weblink: " + WebLink);
 					
 					// Creates an object
@@ -252,6 +268,7 @@ public class Menu extends Activity {
 	}
 	
 	// Loads the data about all the buildings via an XML file.
+	// The following code is based on code found here: http://www.mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/
 	private void BuildingsXML() {
 
 		try {
@@ -259,40 +276,40 @@ public class Menu extends Activity {
 			// Take xml file via input stream from the assets folder.
 			InputStream inputStream = getApplicationContext().getAssets().open("buildings.xml");
 			
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputStream);
+			DocumentBuilderFactory docBuildFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuildFactory.newDocumentBuilder();
+			Document document = docBuilder.parse(inputStream);
 
-			doc.getDocumentElement().normalize();
+			document.getDocumentElement().normalize();
 			  
-			//Log.d("Devon", "Root element: " + doc.getDocumentElement().getNodeName());
+			// Log.d("Devon", "Root element: " + document.getDocumentElement().getNodeName());
 			  
-			NodeList nList = doc.getElementsByTagName("building");
+			NodeList nodeList = document.getElementsByTagName("building");
 			  
-			for (int i = 0; i < nList.getLength(); i++) {
+			for (int i = 0; i < nodeList.getLength(); i++) {
 			  
-				Node nNode = nList.item(i);
+				Node node = nodeList.item(i);
 			  
-				//Log.d("Devon", "Current Element: " + nNode.getNodeName());
+				// Log.d("Devon", "Current Element: " + nNode.getNodeName());
 			  
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				if (node.getNodeType() == Node.ELEMENT_NODE) {
 			  
-					Element eElement = (Element) nNode;
+					Element element = (Element) node;
 			  
 					// Log.d("Devon","Id : " + eElement.getAttribute("id"));
-					String BuildingName = eElement.getElementsByTagName("name").item(0).getTextContent();
-					//Log.d("Devon", "Building Name: " + BuildingName);
-					String BuildingLat = eElement.getElementsByTagName("latitude").item(0).getTextContent();
-					//Log.d("Devon", "Latitude: " + BuildingLat);
-					String BuildingLng = eElement.getElementsByTagName("longitude").item(0).getTextContent();
-					//Log.d("Devon", "Longitude: " + BuildingLng);
-					String RoomCodes = eElement.getElementsByTagName("roomcodes").item(0).getTextContent();
-					//Log.d("Devon", "Room codes: " + RoomCodes);
+					String BuildingName = element.getElementsByTagName("name").item(0).getTextContent();
+					// Log.d("Devon", "Building Name: " + BuildingName);
+					String BuildingLat = element.getElementsByTagName("latitude").item(0).getTextContent();
+					// Log.d("Devon", "Latitude: " + BuildingLat);
+					String BuildingLng = element.getElementsByTagName("longitude").item(0).getTextContent();
+					// Log.d("Devon", "Longitude: " + BuildingLng);
+					String RoomCodes = element.getElementsByTagName("roomcodes").item(0).getTextContent();
+					// Log.d("Devon", "Room codes: " + RoomCodes);
 					
 					// Creates an object
 					Buildings building = new Buildings(BuildingName, RoomCodes, BuildingLat, BuildingLng);
 					myBuildings.add(building);
-					//Log.d("Devon", "Added building object called: " + building.getBuildingName());
+					// Log.d("Devon", "Added building object called: " + building.getBuildingName());
 				}
 			}
 		}
@@ -304,45 +321,45 @@ public class Menu extends Activity {
 	}	
 	
 	// Loads the staff data via an XML file.
+	// The following code is based on code found here: http://www.mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/
 	private void StaffSearchXML() {
 
 		try {
 
 			// Take xml file via input stream from the assets folder.
 			InputStream inputStream = getApplicationContext().getAssets().open("staff.xml");
-			
 
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputStream);
+			DocumentBuilderFactory docBuildFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docBuildFactory.newDocumentBuilder();
+			Document document = docBuilder.parse(inputStream);
 
-			doc.getDocumentElement().normalize();
+			document.getDocumentElement().normalize();
+			  
+			// Log.d("Devon", "Root element: " + document.getDocumentElement().getNodeName());
+			  
+			NodeList nodeList = document.getElementsByTagName("person");
 
-			//Log.d("Devon", "Root element: " + doc.getDocumentElement().getNodeName());
-
-			NodeList nList = doc.getElementsByTagName("person");
-
-			for (int i = 0; i < nList.getLength(); i++) {
-
-				Node nNode = nList.item(i);
-
-				//Log.d("Devon", "Current Element: " + nNode.getNodeName());
-
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-					Element eElement = (Element) nNode;
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				  
+				Node node = nodeList.item(i);
+			  
+				// Log.d("Devon", "Current Element: " + nNode.getNodeName());
+			  
+				if (node.getNodeType() == Node.ELEMENT_NODE) {
+			  
+					Element element = (Element) node;
 
 					// Log.d("Devon","Id : " + eElement.getAttribute("id"));
-					String PersonName = eElement.getElementsByTagName("name").item(0).getTextContent();
+					String PersonName = element.getElementsByTagName("name").item(0).getTextContent();
 					//Log.d("Devon", "Person Name: " + PersonName);
 					
-					String Dept = eElement.getElementsByTagName("department").item(0).getTextContent();
+					String Dept = element.getElementsByTagName("department").item(0).getTextContent();
 					//Log.d("Devon", "Department: " + Dept);
 					
-					String Email = eElement.getElementsByTagName("email").item(0).getTextContent();
+					String Email = element.getElementsByTagName("email").item(0).getTextContent();
 					//Log.d("Devon", "Email: " + Email);
 					
-					String Extension = eElement.getElementsByTagName("extension").item(0).getTextContent();
+					String Extension = element.getElementsByTagName("extension").item(0).getTextContent();
 					//Log.d("Devon", "Extension: " + Extension);
 					
 					// Creates an object
@@ -360,6 +377,7 @@ public class Menu extends Activity {
 		}
 	}
 
+	// Retrieves current location of device.
 	public void getCurrentLocation() {
 
 		lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -444,6 +462,8 @@ public class Menu extends Activity {
 			alertDialog.show();
 	}
 	
+	// Moves the activity to the back of the stack so if the user was to press the back button, the application would be exited.
+	// Prevents having the need to press back multiple times to reverse back through the stack to exit the app.
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -453,6 +473,7 @@ public class Menu extends Activity {
 	    return super.onKeyDown(keyCode, event);
 	}
 	
+	// Exits the app when the back button is pressed.
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
