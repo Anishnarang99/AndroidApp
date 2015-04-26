@@ -29,7 +29,7 @@ public class SafetyToolbox extends Activity implements OnClickListener {
 	TextView textView;
 	String textViewName;
 	Camera camera;
-	boolean hasFlash, isFlashOn;
+	public boolean hasFlash, isFlashOn;
 	Parameters params;
 	SurfaceTexture surfaceTexture; 
 	
